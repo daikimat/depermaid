@@ -90,6 +90,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D93314F42B46DE7100D95331 /* Build configuration list for PBXNativeTarget "ExampleDepermaid" */;
 			buildPhases = (
+				D90BF3992B483CB5008DEA60 /* Run Depermaid And Update README  */,
 				D93314CB2B46DE6F00D95331 /* Sources */,
 				D93314CC2B46DE6F00D95331 /* Frameworks */,
 				D93314CD2B46DE6F00D95331 /* Resources */,
@@ -150,6 +151,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D90BF3992B483CB5008DEA60 /* Run Depermaid And Update README  */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Package/Package.swift",
+			);
+			name = "Run Depermaid And Update README ";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "  xcrun --sdk macosx swift package --package-path ./Package depermaid\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D93314CB2B46DE6F00D95331 /* Sources */ = {
@@ -288,6 +312,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ExampleDepermaid/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -324,6 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ExampleDepermaid/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

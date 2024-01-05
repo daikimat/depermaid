@@ -36,6 +36,7 @@ $ swift package plugin depermaid
 graph TD;
     Example;
     Example-->Cat;
+    Example-->Dog;
     Dog;
     Dog-->AnimalClient;
     Cat;
@@ -51,6 +52,7 @@ $ swift package plugin depermaid --include-test
 graph TD;
     Example;
     Example-->Cat;
+    Example-->Dog;
     Dog;
     Dog-->AnimalClient;
     Cat;
@@ -68,6 +70,7 @@ $ swift package plugin depermaid --include-product
 graph TD;
     Example;
     Example-->Cat;
+    Example-->Dog;
     Dog;
     Dog-->AnimalClient;
     Cat;
@@ -84,6 +87,7 @@ $ swift package plugin depermaid --include-test --include-product
 graph TD;
     Example;
     Example-->Cat;
+    Example-->Dog;
     Dog;
     Dog-->AnimalClient;
     Cat;

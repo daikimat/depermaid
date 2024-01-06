@@ -22,31 +22,33 @@ struct Depermaid: CommandPlugin {
 
         var mermaid = "```mermaid"
         mermaid.newLine("graph TD;")
-        context.package.sourceModules.forEach { module in
-            let moduleName = module.name
-            if module.kind != .test || includeTest {
+        context.package.sourceModules
+            .filter({ module in
+                return module.kind != .test || includeTest
+            }).forEach { module in
+                let moduleName = module.name
                 if module.kind != .test {
                     mermaid.newLine("\(moduleName);", indent: 1)
                 } else {
                     mermaid.newLine("\(moduleName){{\(moduleName)}};", indent: 1)
                 }
-
-                module.dependencies.forEach { moduleDependencies in
-                    switch moduleDependencies {
-                    case let .product(product):
-                        if includeProduct {
-                            mermaid.newLine("\(moduleName)-->\(product.name)[[\(product.name)]];", indent: 1)
+                
+                module.dependencies
+                    .forEach { moduleDependencies in
+                        switch moduleDependencies {
+                        case let .product(product):
+                            if includeProduct {
+                                mermaid.newLine("\(moduleName)-->\(product.name)[[\(product.name)]];", indent: 1)
+                            }
+                            
+                        case let .target(target):
+                            mermaid.newLine("\(moduleName)-->\(target.name);", indent: 1)
+                            
+                        @unknown default:
+                            fatalError("unknown type dependencies")
                         }
-
-                    case let .target(target):
-                        mermaid.newLine("\(moduleName)-->\(target.name);", indent: 1)
-
-                    @unknown default:
-                        fatalError("unknown type dependencies")
                     }
-                }
             }
-        }
         mermaid.newLine("```")
         print(mermaid)
     }

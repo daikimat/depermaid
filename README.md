@@ -113,21 +113,15 @@ The mechanism behind the automatic update of the README file during the build pr
 
 Follow these steps to build and run the example project:
 
-1. Navigate to the `./Example` directory:
+1. Open the Xcode project:
 
    ```bash
-   cd ./Example
+   open ./Example/ExampleDepermaid.xcodeproj
    ```
 
-2. Open the Xcode project:
+2. Make changes to the `./Example/Package.swift` file as needed.
 
-   ```bash
-   open ExampleDepermaid.xcodeproj
-   ```
-
-3. Make changes to the `./Example/Package.swift` file as needed.
-
-4. Build and run the project from Xcode.
+3. Build and run the project from Xcode.
 
 After the build process, please review this README file to see the updated graph reflecting the changes made to the Swift package dependencies.
 

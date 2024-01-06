@@ -6,11 +6,11 @@ import PackageDescription
 let package = Package(
     name: "depermaid",
     products: [
-        .plugin(name: "depermaid", targets: ["depermaid"]),
+        .plugin(name: "depermaid", targets: ["Depermaid"]),
     ],
     targets: [
         .plugin(
-            name: "depermaid",
+            name: "Depermaid",
             capability: .command(
                 intent: .custom(verb: "depermaid", description: "Generate Swift dependency visualizations using Mermaid notation from Swift Package."),
                 permissions: []

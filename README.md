@@ -33,15 +33,15 @@
 $ swift package plugin depermaid
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClient;
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClient
 ```
 
 ### Including Tests
@@ -49,17 +49,17 @@ graph TD;
 $ swift package plugin depermaid --include-test
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClientTests{{AnimalClientTests}};
-    AnimalClientTests-->AnimalClient;
-    AnimalClient;
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests-->AnimalClient
+    AnimalClient
 ```
 
 ### Including Products
@@ -67,16 +67,16 @@ graph TD;
 $ swift package plugin depermaid --include-product
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClient;
-    AnimalClient-->LifeCore[[LifeCore]];
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
 ```
 
 ### Including Tests and Products
@@ -84,18 +84,18 @@ graph TD;
 $ swift package plugin depermaid --include-test --include-product
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClientTests{{AnimalClientTests}};
-    AnimalClientTests-->AnimalClient;
-    AnimalClient;
-    AnimalClient-->LifeCore[[LifeCore]];
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests-->AnimalClient
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
 ```
 
 Feel free to customize the command options according to your specific use case.
@@ -113,21 +113,15 @@ The mechanism behind the automatic update of the README file during the build pr
 
 Follow these steps to build and run the example project:
 
-1. Navigate to the `./Example` directory:
+1. Open the Xcode project:
 
    ```bash
-   cd ./Example
+   open ./Example/ExampleDepermaid.xcodeproj
    ```
 
-2. Open the Xcode project:
+2. Make changes to the `./Example/Package.swift` file as needed.
 
-   ```bash
-   open ExampleDepermaid.xcodeproj
-   ```
-
-3. Make changes to the `./Example/Package.swift` file as needed.
-
-4. Build and run the project from Xcode.
+3. Build and run the project from Xcode.
 
 After the build process, please review this README file to see the updated graph reflecting the changes made to the Swift package dependencies.
 

@@ -20,17 +20,16 @@ struct Depermaid: CommandPlugin {
         let includeTest = (argExtractor.extractFlag(named: "include-test") > 0)
         let includeProduct = (argExtractor.extractFlag(named: "include-product") > 0)
 
-        var mermaid = "```mermaid"
-        mermaid.newLine("graph TD;")
+        var flowchart = Flowchart()
         context.package.sourceModules
             .filter({ module in
                 return module.kind != .test || includeTest
             }).forEach { module in
                 let moduleName = module.name
                 if module.kind != .test {
-                    mermaid.newLine("\(moduleName);", indent: 1)
+                    flowchart.append(FlowchartItem(Node(text: moduleName)))
                 } else {
-                    mermaid.newLine("\(moduleName){{\(moduleName)}};", indent: 1)
+                    flowchart.append(FlowchartItem(Node(text: moduleName, shape: .hexagon)))
                 }
                 
                 module.dependencies
@@ -38,24 +37,17 @@ struct Depermaid: CommandPlugin {
                         switch moduleDependencies {
                         case let .product(product):
                             if includeProduct {
-                                mermaid.newLine("\(moduleName)-->\(product.name)[[\(product.name)]];", indent: 1)
+                                flowchart.append(FlowchartItem(Node(text: moduleName), Node(text: product.name, shape: .subroutine)))
                             }
                             
                         case let .target(target):
-                            mermaid.newLine("\(moduleName)-->\(target.name);", indent: 1)
+                            flowchart.append(FlowchartItem(Node(text: moduleName), Node(text: target.name)))
                             
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }
                     }
             }
-        mermaid.newLine("```")
-        print(mermaid)
-    }
-}
-
-extension String {
-    mutating func newLine(_ new: String, indent: Int = 0) {
-        self = self + "\n" + String(repeating: "    ", count: indent) + new
+        print(flowchart.toMermaidBlock())
     }
 }

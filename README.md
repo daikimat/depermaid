@@ -33,15 +33,15 @@
 $ swift package plugin depermaid
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClient;
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClient
 ```
 
 ### Including Tests
@@ -49,17 +49,17 @@ graph TD;
 $ swift package plugin depermaid --include-test
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClientTests{{AnimalClientTests}};
-    AnimalClientTests-->AnimalClient;
-    AnimalClient;
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests-->AnimalClient
+    AnimalClient
 ```
 
 ### Including Products
@@ -67,16 +67,16 @@ graph TD;
 $ swift package plugin depermaid --include-product
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClient;
-    AnimalClient-->LifeCore[[LifeCore]];
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
 ```
 
 ### Including Tests and Products
@@ -84,18 +84,18 @@ graph TD;
 $ swift package plugin depermaid --include-test --include-product
 ```
 ```mermaid
-graph TD;
-    Example;
-    Example-->Cat;
-    Example-->Dog;
-    Dog;
-    Dog-->AnimalClient;
-    Cat;
-    Cat-->AnimalClient;
-    AnimalClientTests{{AnimalClientTests}};
-    AnimalClientTests-->AnimalClient;
-    AnimalClient;
-    AnimalClient-->LifeCore[[LifeCore]];
+flowchart TD;
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests-->AnimalClient
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
 ```
 
 Feel free to customize the command options according to your specific use case.

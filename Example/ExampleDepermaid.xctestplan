@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "06D6FE85-541B-49B0-BFC3-FB092E5ED80E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ExampleDepermaid.xcodeproj",
+      "identifier" : "D93314CE2B46DE6F00D95331",
+      "name" : "ExampleDepermaid"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Package",
+        "identifier" : "AnimalClientTests",
+        "name" : "AnimalClientTests"
+      }
+    }
+  ],
+  "version" : 1
+}

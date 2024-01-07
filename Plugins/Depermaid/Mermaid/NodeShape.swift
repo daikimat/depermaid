@@ -7,6 +7,7 @@
 
 enum NodeShape {
     case square
+    case stadium
     case subroutine
     case hexagon
 }

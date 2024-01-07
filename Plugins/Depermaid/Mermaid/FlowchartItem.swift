@@ -17,7 +17,7 @@ struct FlowchartItem {
 extension FlowchartItem {
     func toString() -> String {
         var string = firstNode.toString()
-        if let secondNode = secondNode{
+        if let secondNode = secondNode {
             string += "-->\(secondNode.toString())"
         }
         return string

@@ -9,6 +9,12 @@ let package = Package(
         .plugin(name: "depermaid", targets: ["Depermaid"]),
     ],
     targets: [
+        .testTarget(
+            name: "MermaidTests",
+            dependencies: [
+                // Restriction that Test cannot depend on Plugin, so use symbolic links for testing.
+            ]
+        ),
         .plugin(
             name: "Depermaid",
             capability: .command(

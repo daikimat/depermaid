@@ -45,7 +45,13 @@ let package = Package(
             dependencies: [
                 "AnimalClient"
             ]
-        )
+        ),
+        .executableTarget(
+            name: "ExecutableExample",
+            dependencies: [
+                "Dog"
+            ]
+        ),
     ]
 )
 

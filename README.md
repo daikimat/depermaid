@@ -33,7 +33,9 @@
 $ swift package plugin depermaid
 ```
 ```mermaid
-flowchart TD;
+flowchart TD
+    ExecutableExample([ExecutableExample])
+    ExecutableExample-->Dog
     Example
     Example-->Cat
     Example-->Dog
@@ -49,7 +51,9 @@ flowchart TD;
 $ swift package plugin depermaid --include-test
 ```
 ```mermaid
-flowchart TD;
+flowchart TD
+    ExecutableExample([ExecutableExample])
+    ExecutableExample-->Dog
     Example
     Example-->Cat
     Example-->Dog
@@ -67,7 +71,9 @@ flowchart TD;
 $ swift package plugin depermaid --include-product
 ```
 ```mermaid
-flowchart TD;
+flowchart TD
+    ExecutableExample([ExecutableExample])
+    ExecutableExample-->Dog
     Example
     Example-->Cat
     Example-->Dog
@@ -84,7 +90,9 @@ flowchart TD;
 $ swift package plugin depermaid --include-test --include-product
 ```
 ```mermaid
-flowchart TD;
+flowchart TD
+    ExecutableExample([ExecutableExample])
+    ExecutableExample-->Dog
     Example
     Example-->Cat
     Example-->Dog

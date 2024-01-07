@@ -9,13 +9,13 @@ import XCTest
 
 final class MermaidTests: XCTestCase {
     func testNodeToString() {
-        let normalNode = Node("normalNode")
-        let normalNodeActual = "normalNode"
-        XCTAssertEqual(normalNode.toString(), normalNodeActual)
+        let idOnlyNode = Node("normalNode")
+        let idOnlyNodeActual = "normalNode"
+        XCTAssertEqual(idOnlyNode.toString(), idOnlyNodeActual)
         
-        let normalNodeWithShape = Node("normalNodeWithShape", shape: .square)
-        let normalNodeWithShapeActual = "normalNodeWithShape"
-        XCTAssertEqual(normalNodeWithShape.toString(), normalNodeWithShapeActual)
+        let squareNode = Node("squareNode", shape: .square)
+        let squareNodeActual = "squareNode[squareNode]"
+        XCTAssertEqual(squareNode.toString(), squareNodeActual)
         
         let hexagonNode = Node("hexagonNode", shape: .hexagon)
         let hexagonNodeActual = "hexagonNode{{hexagonNode}}"

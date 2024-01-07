@@ -37,16 +37,39 @@ struct Depermaid: CommandPlugin {
                 return module.kind != .test || includeTest
             }
             .forEach { module in
-                flowchart.append(
-                    Node(module.name, shape: module.kind == .test ? .hexagon : .square)
-                )
+                var shape: NodeShape? = nil
+                switch (module.kind) {
+                case .generic:
+                    break
+
+                case .executable:
+                    shape = .stadium
+
+                case .test:
+                    shape = .hexagon
+
+                case .snippet:
+                    break
+
+                case .macro:
+                    break
+
+                @unknown default:
+                    fatalError("unknown kind")
+                }
+                flowchart.append(Node(module.name, shape: shape))
+
                 module.dependencies
+                    .filter { dependencies in
+                        if case .product(_) = dependencies {
+                            return includeProduct
+                        }
+                        return true
+                    }
                     .forEach { dependencies in
                         switch dependencies {
                         case let .product(product):
-                            if includeProduct {
-                                flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
-                            }
+                            flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
                             
                         case let .target(target):
                             flowchart.append(Node(module.name), Node(target.name))

@@ -20,12 +20,13 @@
     This will display the available options:
 
     ```bash
-    USAGE: swift package depermaid [--include-test] [--include-product]
+    USAGE: swift package depermaid [--test] [--executable] [--product]
 
     OPTIONS:
-      --include-test          Include .testTarget(name:dependencies:path:exclude:sources:)
-      --include-product       Include .product(name:package:)
-      --help                  Show help information.
+      --test         Include .testTarget(name:...)
+      --executable   Include .executableTarget(name:...)
+      --product      Include .product(name:...)
+      --help         Show help information.
     ```
 
 ### Basic Usage
@@ -34,8 +35,6 @@ $ swift package plugin depermaid
 ```
 ```mermaid
 flowchart TD
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
     Example
     Example-->Cat
     Example-->Dog
@@ -46,14 +45,12 @@ flowchart TD
     AnimalClient
 ```
 
-### Including Tests
+### Including Test Targets
 ```bash
-$ swift package plugin depermaid --include-test
+$ swift package plugin depermaid --test
 ```
 ```mermaid
 flowchart TD
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
     Example
     Example-->Cat
     Example-->Dog
@@ -65,10 +62,9 @@ flowchart TD
     AnimalClientTests-->AnimalClient
     AnimalClient
 ```
-
-### Including Products
+### Including Executable Targets
 ```bash
-$ swift package plugin depermaid --include-product
+$ swift package plugin depermaid --executable
 ```
 ```mermaid
 flowchart TD
@@ -82,12 +78,28 @@ flowchart TD
     Cat
     Cat-->AnimalClient
     AnimalClient
+```
+
+### Including Products
+```bash
+$ swift package plugin depermaid --product
+```
+```mermaid
+flowchart TD
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClient
     AnimalClient-->LifeCore[[LifeCore]]
 ```
 
-### Including Tests and Products
+### Including All
 ```bash
-$ swift package plugin depermaid --include-test --include-product
+$ swift package plugin depermaid --test --executable --product
 ```
 ```mermaid
 flowchart TD

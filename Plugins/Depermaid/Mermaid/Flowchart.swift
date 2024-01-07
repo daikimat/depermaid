@@ -17,7 +17,7 @@ struct Flowchart {
 extension Flowchart {
     func toString() -> String{
         var mermaid = "```mermaid"
-        mermaid.newLine("flowchart \(self.direction);")
+        mermaid.newLine("flowchart \(self.direction)")
         items.forEach { item in
             mermaid.newLine(item.toString(), indent: 1)
         }

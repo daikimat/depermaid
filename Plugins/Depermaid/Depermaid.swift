@@ -28,8 +28,8 @@ struct Depermaid: CommandPlugin {
             .forEach { module in
                 flowchart.append(Node(module.name, shape: module.kind == .test ? .hexagon : .square))
                 module.dependencies
-                    .forEach { moduleDependencies in
-                        switch moduleDependencies {
+                    .forEach { dependencies in
+                        switch dependencies {
                         case let .product(product):
                             if includeProduct {
                                 flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))

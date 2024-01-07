@@ -22,21 +22,21 @@ struct Depermaid: CommandPlugin {
 
         var flowchart = Flowchart()
         context.package.sourceModules
-            .filter({ module in
+            .filter { module in
                 return module.kind != .test || includeTest
-            }).forEach { module in
-                let moduleName = module.name
-                flowchart.append(Node(moduleName, shape: module.kind == .test ? .hexagon : .square))
+            }
+            .forEach { module in
+                flowchart.append(Node(module.name, shape: module.kind == .test ? .hexagon : .square))
                 module.dependencies
                     .forEach { moduleDependencies in
                         switch moduleDependencies {
                         case let .product(product):
                             if includeProduct {
-                                flowchart.append(Node(moduleName), Node(product.name, shape: .subroutine))
+                                flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
                             }
                             
                         case let .target(target):
-                            flowchart.append(Node(moduleName), Node(target.name))
+                            flowchart.append(Node(module.name), Node(target.name))
                             
                         @unknown default:
                             fatalError("unknown type dependencies")

@@ -7,12 +7,13 @@ struct Depermaid: CommandPlugin {
         if argExtractor.extractFlag(named: "help") > 0 {
             print(
                 """
-                USAGE: swift package depermaid [--include-test] [--include-product]
+                USAGE: swift package depermaid [--test] [--executable] [--product]
 
                 OPTIONS:
-                  --include-test          Include .testTarget(name:dependencies:path:exclude:sources:)
-                  --include-product       Include .product(name:package:)
-                  --help                  Show help information.
+                  --test         Include .testTarget(name:...)
+                  --executable   Include .executableTarget(name:...)
+                  --product      Include .product(name:...)
+                  --help         Show help information.
                 """
             )
             return
@@ -20,8 +21,9 @@ struct Depermaid: CommandPlugin {
 
         let flowchart = createFlowchart(
             from: context.package.sourceModules,
-            includeTest: (argExtractor.extractFlag(named: "include-test") > 0),
-            includeProduct: (argExtractor.extractFlag(named: "include-product") > 0)
+            includeTest: (argExtractor.extractFlag(named: "test") > 0),
+            includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
+            includeProduct: (argExtractor.extractFlag(named: "product") > 0)
         )
         print(flowchart.toString())
     }
@@ -29,12 +31,31 @@ struct Depermaid: CommandPlugin {
     private func createFlowchart(
         from sourceModules: [SourceModuleTarget],
         includeTest: Bool,
+        includeExecutable: Bool,
         includeProduct: Bool
     ) -> Flowchart {
         var flowchart = Flowchart()
         sourceModules
             .filter { module in
-                return module.kind != .test || includeTest
+                return  switch (module.kind) {
+                case .generic:
+                    true
+
+                case .executable:
+                    includeExecutable
+
+                case .test:
+                    includeTest
+
+                case .snippet:
+                    false
+
+                case .macro:
+                    false
+
+                @unknown default:
+                    fatalError("unknown kind")
+                }
             }
             .forEach { module in
                 var shape: NodeShape? = nil
@@ -70,10 +91,10 @@ struct Depermaid: CommandPlugin {
                         switch dependencies {
                         case let .product(product):
                             flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
-                            
+
                         case let .target(target):
                             flowchart.append(Node(module.name), Node(target.name))
-                            
+
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }

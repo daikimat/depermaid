@@ -7,12 +7,10 @@
 
 struct Node {
     let id: String
-    let text: String
     let shape: NodeShape
     
-    init(text: String, shape: NodeShape = .square) {
-        self.id = text
-        self.text = text
+    init(_ id: String, shape: NodeShape = .square) {
+        self.id = id
         self.shape = shape
     }
     
@@ -22,11 +20,11 @@ extension Node {
     func toString() -> String {
         return switch(shape) {
         case .square:
-            text
+            id
         case .subroutine:
-            "\(id)[[\(text)]]"
+            "\(id)[[\(id)]]"
         case .hexagon:
-            "\(id){{\(text)}}"
+            "\(id){{\(id)}}"
         }
     }
 }

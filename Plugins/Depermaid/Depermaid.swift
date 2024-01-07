@@ -26,28 +26,23 @@ struct Depermaid: CommandPlugin {
                 return module.kind != .test || includeTest
             }).forEach { module in
                 let moduleName = module.name
-                if module.kind != .test {
-                    flowchart.append(FlowchartItem(Node(text: moduleName)))
-                } else {
-                    flowchart.append(FlowchartItem(Node(text: moduleName, shape: .hexagon)))
-                }
-                
+                flowchart.append(Node(moduleName, shape: module.kind == .test ? .hexagon : .square))
                 module.dependencies
                     .forEach { moduleDependencies in
                         switch moduleDependencies {
                         case let .product(product):
                             if includeProduct {
-                                flowchart.append(FlowchartItem(Node(text: moduleName), Node(text: product.name, shape: .subroutine)))
+                                flowchart.append(Node(moduleName), Node(product.name, shape: .subroutine))
                             }
                             
                         case let .target(target):
-                            flowchart.append(FlowchartItem(Node(text: moduleName), Node(text: target.name)))
+                            flowchart.append(Node(moduleName), Node(target.name))
                             
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }
                     }
             }
-        print(flowchart.toMermaidBlock())
+        print(flowchart.toString())
     }
 }

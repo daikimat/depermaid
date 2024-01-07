@@ -9,13 +9,13 @@ struct Flowchart {
     let direction: Direction = .TD
     var items: [FlowchartItem] = []
     
-    mutating func append(_ item: FlowchartItem) {
-        self.items.append(item)
+    mutating func append(_ firstNode: Node, _ secondNode: Node? = nil) {
+        self.items.append(FlowchartItem(firstNode, secondNode))
     }
 }
 
 extension Flowchart {
-    func toMermaidBlock() -> String{
+    func toString() -> String{
         var mermaid = "```mermaid"
         mermaid.newLine("flowchart \(self.direction);")
         items.forEach { item in

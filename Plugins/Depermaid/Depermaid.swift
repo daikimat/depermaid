@@ -17,16 +17,29 @@ struct Depermaid: CommandPlugin {
             )
             return
         }
-        let includeTest = (argExtractor.extractFlag(named: "include-test") > 0)
-        let includeProduct = (argExtractor.extractFlag(named: "include-product") > 0)
 
+        let flowchart = createFlowchart(
+            from: context.package.sourceModules,
+            includeTest: (argExtractor.extractFlag(named: "include-test") > 0),
+            includeProduct: (argExtractor.extractFlag(named: "include-product") > 0)
+        )
+        print(flowchart.toString())
+    }
+    
+    private func createFlowchart(
+        from sourceModules: [SourceModuleTarget],
+        includeTest: Bool,
+        includeProduct: Bool
+    ) -> Flowchart {
         var flowchart = Flowchart()
-        context.package.sourceModules
+        sourceModules
             .filter { module in
                 return module.kind != .test || includeTest
             }
             .forEach { module in
-                flowchart.append(Node(module.name, shape: module.kind == .test ? .hexagon : .square))
+                flowchart.append(
+                    Node(module.name, shape: module.kind == .test ? .hexagon : .square)
+                )
                 module.dependencies
                     .forEach { dependencies in
                         switch dependencies {
@@ -43,6 +56,6 @@ struct Depermaid: CommandPlugin {
                         }
                     }
             }
-        print(flowchart.toString())
+        return flowchart
     }
 }

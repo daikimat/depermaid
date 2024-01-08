@@ -26,3 +26,14 @@ jobs:
       - name: Run Test
         run: |
           swift test | xcbeautify
+
+      - name: Check Consistency of Example and Readme
+        run: |
+          SRCROOT=$(pwd)
+          sh tools/syncExampleToReadme.sh $SRCROOT
+          if [[ -n "$(git diff --exit-code)" ]]; then
+            echo "Error: Example's package dependencies are out of sync with README"
+            exit 1
+          else
+            echo "Success: The Example and Readme have been synced!"
+          fi

@@ -14,7 +14,7 @@ final class MermaidTests: XCTestCase {
         XCTAssertEqual(idOnlyNode.toString(), idOnlyNodeActual)
         
         let squareNode = Node("squareNode", shape: .square)
-        let squareNodeActual = "squareNode[squareNode]CIFaileTest"
+        let squareNodeActual = "squareNode[squareNode]"
         XCTAssertEqual(squareNode.toString(), squareNodeActual)
         
         let hexagonNode = Node("hexagonNode", shape: .hexagon)

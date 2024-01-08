@@ -171,7 +171,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n  replacement=$(xcrun --sdk macosx swift package --package-path ${SRCROOT}/Package depermaid)\n  echo $replacement\n  perl -i -0777 -pe \"s/(Usage.*?)(\\`\\`\\`mermaid.*?\\`\\`\\`)/\\$1$replacement/s\" ${SRCROOT}/../README.md\n\n  replacement=$(xcrun --sdk macosx swift package --package-path ${SRCROOT}/Package depermaid --test)\n  echo $replacement\n  perl -i -0777 -pe \"s/(Including Test Targets.*?)(\\`\\`\\`mermaid.*?\\`\\`\\`)/\\$1$replacement/s\" ${SRCROOT}/../README.md\n\n  replacement=$(xcrun --sdk macosx swift package --package-path ${SRCROOT}/Package depermaid --executable)\n  echo $replacement\n  perl -i -0777 -pe \"s/(Including Executable Targets.*?)(\\`\\`\\`mermaid.*?\\`\\`\\`)/\\$1$replacement/s\" ${SRCROOT}/../README.md\n  \n  replacement=$(xcrun --sdk macosx swift package --package-path ${SRCROOT}/Package depermaid --product)\n  echo $replacement\n  perl -i -0777 -pe \"s/(Including Products.*?)(\\`\\`\\`mermaid.*?\\`\\`\\`)/\\$1$replacement/s\" ${SRCROOT}/../README.md\n\n  replacement=$(xcrun --sdk macosx swift package --package-path ${SRCROOT}/Package depermaid --test --executable --product)\n  echo $replacement\n  perl -i -0777 -pe \"s/(Including All.*?)(\\`\\`\\`mermaid.*?\\`\\`\\`)/\\$1$replacement/s\" ${SRCROOT}/../README.md\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n  sh ${SRCROOT}/tool/syncExampleToReadme.sh ${SRCROOT}\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -18,7 +18,8 @@ let package = Package(
         .target(
             name: "Example",
             dependencies: [
-                "Cat"
+                "Cat",
+                "Dog"
             ]
         ),
         .target(

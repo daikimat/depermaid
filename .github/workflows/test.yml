@@ -25,12 +25,7 @@ jobs:
 
       - name: Run Test
         run: |
-          if swift test | xcbeautify; then
-            echo "Success: All tests passed!"
-          else
-            echo "Error: Some tests failed!"
-            exit 1
-          fi
+          set -o pipefail && swift test | xcbeautify
 
       - name: Check Consistency of Example and Readme
         run: |

@@ -15,24 +15,11 @@
 2. Run the following command in the same directory as your `Package.swift` file:
 
     ```bash
-    $ swift package plugin depermaid --help
-    ```
-    This will display the available options:
-
-    ```bash
-    USAGE: swift package depermaid [--test] [--executable] [--product]
-
-    OPTIONS:
-      --test         Include .testTarget(name:...)
-      --executable   Include .executableTarget(name:...)
-      --product      Include .product(name:...)
-      --help         Show help information.
+    $ swift package plugin depermaid
     ```
 
-### Basic Usage
-```bash
-$ swift package plugin depermaid
-```
+    The generated Mermaid diagram illustrates the dependencies between modules within your Swift package:
+
 ```mermaid
 flowchart TD
     Example
@@ -45,10 +32,18 @@ flowchart TD
     AnimalClient
 ```
 
+## Command Options
+
+You can customize the command options according to your specific use case:
+
 ### Including Test Targets
+
+Run the following command to include test targets in the generated Mermaid diagram:
+
 ```bash
 $ swift package plugin depermaid --test
 ```
+
 ```mermaid
 flowchart TD
     Example
@@ -62,10 +57,15 @@ flowchart TD
     AnimalClientTests-->AnimalClient
     AnimalClient
 ```
+
 ### Including Executable Targets
+
+Run the following command to include executable targets in the generated Mermaid diagram:
+
 ```bash
 $ swift package plugin depermaid --executable
 ```
+
 ```mermaid
 flowchart TD
     ExecutableExample([ExecutableExample])
@@ -81,9 +81,13 @@ flowchart TD
 ```
 
 ### Including Products
+
+Run the following command to include products in the generated Mermaid diagram:
+
 ```bash
 $ swift package plugin depermaid --product
 ```
+
 ```mermaid
 flowchart TD
     Example
@@ -98,9 +102,13 @@ flowchart TD
 ```
 
 ### Including All
+
+Run the following command to include test targets, executable targets, and products in the generated Mermaid diagram:
+
 ```bash
 $ swift package plugin depermaid --test --executable --product
 ```
+
 ```mermaid
 flowchart TD
     ExecutableExample([ExecutableExample])
@@ -118,16 +126,15 @@ flowchart TD
     AnimalClient-->LifeCore[[LifeCore]]
 ```
 
-Feel free to customize the command options according to your specific use case.
-
 ## Examples
 
 To demonstrate the capabilities of Depermaid, a sample project is provided in the `./Example/ExampleDepermaid.xcodeproj`.
 
 ### Expected Behavior
 
-Upon successful build and run, Depermaid will analyze the Swift package dependencies in the example project and generate a Mermaid-format graph. This graph will be automatically reflected in this README file, demonstrating the integration of Depermaid to visualize Swift package dependencies.Please refer to this README file when reviewing the generated graph.
-The mechanism behind the automatic update of the README file during the build process is implemented using a custom script added to the Xcode project's Build Phases. 
+Upon successful build and run, Depermaid will analyze the Swift package dependencies in the example project and generate a Mermaid-format graph. This graph will be automatically reflected in this README file, demonstrating the integration of Depermaid to visualize Swift package dependencies. Please refer to this README file when reviewing the generated graph.
+
+The mechanism behind the automatic update of the README file during the build process is implemented using a custom script added to the Xcode project's Build Phases.
 
 ### Build and Run the Example
 

@@ -2,6 +2,11 @@
 
 [depermaid](https://example.com/depermaid) is a Swift Package Manager plugin that generates [Mermaid](https://mermaid-js.github.io/mermaid/) diagrams representing dependencies within your Swift package.
 
+## Requirements
+``` swift
+//swift-tools-version:5.9
+```
+
 ## Usage
 
 1. Add the following line to your `Package.swift` file in the `dependencies` section:

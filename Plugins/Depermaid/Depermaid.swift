@@ -27,7 +27,9 @@ struct Depermaid: CommandPlugin {
             return
         }
 
-        let direction = Direction(rawValue: argExtractor.extractOption(named: "direction").first ?? "") ?? Direction.TD
+        let direction = Direction(
+            rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
+        ) ?? Direction.TD
         let flowchart = createFlowchart(
             from: context.package.sourceModules,
             direction: direction,

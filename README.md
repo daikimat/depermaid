@@ -133,7 +133,7 @@ flowchart TD
 
 ### Direction
 
-You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, or LR. By default, it's set to TD (Top-Down)."
+You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, LR. By default, it's set to TD (Top-Down)."
 
 ```bash
 $ swift package plugin depermaid --direction LR --test --executable --product

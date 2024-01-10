@@ -6,11 +6,15 @@
 //
 
 struct Flowchart {
-    let direction: Direction = .TD
+    let direction: Direction
     var items: [FlowchartItem] = []
     
     mutating func append(_ firstNode: Node, _ secondNode: Node? = nil) {
         self.items.append(FlowchartItem(firstNode, secondNode))
+    }
+    
+    init(direction: Direction) {
+        self.direction = direction
     }
 }
 

@@ -131,6 +131,31 @@ flowchart TD
     AnimalClient-->LifeCore[[LifeCore]]
 ```
 
+### Direction
+
+You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, or LR. By default, it's set to TD (Top-Down)."
+
+```bash
+$ swift package plugin depermaid --direction LR --test --executable --product
+```
+
+```mermaid
+flowchart LR
+    ExecutableExample([ExecutableExample])
+    ExecutableExample-->Dog
+    Example
+    Example-->Cat
+    Example-->Dog
+    Dog
+    Dog-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests-->AnimalClient
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
+```
+
 ## Examples
 
 To demonstrate the capabilities of Depermaid, a sample project is provided in the `./Example/ExampleDepermaid.xcodeproj`.

@@ -71,22 +71,21 @@ struct Depermaid: CommandPlugin {
                 }
             }
             .forEach { module in
-                var shape: NodeShape? = nil
-                switch (module.kind) {
+                let shape: NodeShape? = switch (module.kind) {
                 case .generic:
-                    break
+                    nil
 
                 case .executable:
-                    shape = .stadium
+                    .stadium
 
                 case .test:
-                    shape = .hexagon
+                    .hexagon
 
                 case .snippet:
-                    break
+                    nil
 
                 case .macro:
-                    break
+                    nil
 
                 @unknown default:
                     fatalError("unknown kind")

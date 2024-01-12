@@ -71,16 +71,15 @@ struct Depermaid: CommandPlugin {
                 }
             }
             .forEach { module in
-                var shape: NodeShape? = nil
                 switch (module.kind) {
                 case .generic:
-                    break
+                    flowchart.append(Node(module.name))
 
                 case .executable:
-                    shape = .stadium
+                    flowchart.append(Node(module.name, shape: .stadium))
 
                 case .test:
-                    shape = .hexagon
+                    flowchart.append(Node(module.name, shape: .hexagon))
 
                 case .snippet:
                     break
@@ -91,7 +90,6 @@ struct Depermaid: CommandPlugin {
                 @unknown default:
                     fatalError("unknown kind")
                 }
-                flowchart.append(Node(module.name, shape: shape))
 
                 module.dependencies
                     .filter { dependencies in

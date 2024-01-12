@@ -90,10 +90,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D93314F42B46DE7100D95331 /* Build configuration list for PBXNativeTarget "ExampleDepermaid" */;
 			buildPhases = (
-				D90BF3992B483CB5008DEA60 /* Run Depermaid And Update README  */,
 				D93314CB2B46DE6F00D95331 /* Sources */,
 				D93314CC2B46DE6F00D95331 /* Frameworks */,
 				D93314CD2B46DE6F00D95331 /* Resources */,
+				D90BF3992B483CB5008DEA60 /* Run Depermaid And Update README  */,
 			);
 			buildRules = (
 			);

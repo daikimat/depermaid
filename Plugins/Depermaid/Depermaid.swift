@@ -95,18 +95,24 @@ struct Depermaid: CommandPlugin {
 
                 module.dependencies
                     .filter { dependencies in
-                        if case .product(_) = dependencies {
-                            return includeProduct
+                        switch dependencies {
+                        case .target(_):
+                            true
+
+                        case .product(_):
+                            includeProduct
+
+                        @unknown default:
+                            fatalError("unknown type dependencies")
                         }
-                        return true
                     }
                     .forEach { dependencies in
                         switch dependencies {
-                        case let .product(product):
-                            flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
-
                         case let .target(target):
                             flowchart.append(Node(module.name), Node(target.name))
+
+                        case let .product(product):
+                            flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
 
                         @unknown default:
                             fatalError("unknown type dependencies")

@@ -164,7 +164,7 @@ To demonstrate the capabilities of Depermaid, a sample project is provided in th
 
 Upon successful build and run, Depermaid will analyze the Swift package dependencies in the example project and generate a Mermaid-format graph. This graph will be automatically reflected in this README file, demonstrating the integration of Depermaid to visualize Swift package dependencies. Please refer to this README file when reviewing the generated graph.
 
-The mechanism behind the automatic update of the README file during the build process is implemented using a custom script added to the Xcode project's Build Phases.
+The mechanism behind the automatic update of the README file during the build process is implemented using a [custom script](./tool/syncExampleToReadme.sh) added to the Xcode project's Build Phases.
 
 ### Build and Run the Example
 

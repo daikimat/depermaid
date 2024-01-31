@@ -5,7 +5,7 @@
 //  Created by daiki-matsumoto on 2024/01/07.
 //
 
-struct Node {
+struct Node: Hashable, Equatable {
     let id: String
     let shape: NodeShape?
     
@@ -14,6 +14,9 @@ struct Node {
         self.shape = shape
     }
     
+    static func == (lhs: Node, rhs: Node) -> Bool{
+        return lhs.id == rhs.id
+    }
 }
 
 extension Node {

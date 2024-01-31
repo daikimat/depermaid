@@ -27,14 +27,14 @@
 
 ```mermaid
 flowchart TD
+    AnimalClient
+    Cat
+    Cat-->AnimalClient
+    Dog
+    Dog-->AnimalClient
     Example
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClient
 ```
 
 ## Command Options
@@ -51,16 +51,17 @@ $ swift package plugin depermaid --test
 
 ```mermaid
 flowchart TD
+    AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests
+    AnimalClientTests-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    Dog
+    Dog-->AnimalClient
     Example
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
-    AnimalClient
 ```
 
 ### Including Executable Targets
@@ -73,16 +74,16 @@ $ swift package plugin depermaid --executable
 
 ```mermaid
 flowchart TD
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
+    AnimalClient
+    Cat
+    Cat-->AnimalClient
+    Dog
+    Dog-->AnimalClient
     Example
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClient
+    ExecutableExample([ExecutableExample])
+    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ### Including Products
@@ -95,15 +96,15 @@ $ swift package plugin depermaid --product
 
 ```mermaid
 flowchart TD
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
+    Cat
+    Cat-->AnimalClient
+    Dog
+    Dog-->AnimalClient
     Example
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClient
-    AnimalClient-->LifeCore[[LifeCore]]
 ```
 
 ### Including All
@@ -116,19 +117,20 @@ $ swift package plugin depermaid --test --executable --product
 
 ```mermaid
 flowchart TD
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
+    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests
+    AnimalClientTests-->AnimalClient
+    Cat
+    Cat-->AnimalClient
+    Dog
+    Dog-->AnimalClient
     Example
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
-    AnimalClient
-    AnimalClient-->LifeCore[[LifeCore]]
+    ExecutableExample([ExecutableExample])
+    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ### Direction
@@ -141,19 +143,20 @@ $ swift package plugin depermaid --direction LR --test --executable --product
 
 ```mermaid
 flowchart LR
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
+    AnimalClient
+    AnimalClient-->LifeCore[[LifeCore]]
+    AnimalClientTests
+    AnimalClientTests-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}
+    Cat
+    Cat-->AnimalClient
+    Dog
+    Dog-->AnimalClient
     Example
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
-    AnimalClient
-    AnimalClient-->LifeCore[[LifeCore]]
+    ExecutableExample([ExecutableExample])
+    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ## Examples

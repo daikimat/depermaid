@@ -26,7 +26,7 @@ struct Depermaid: CommandPlugin {
             )
             return
         }
-
+        
         let direction = Direction(
             rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
         ) ?? Direction.TD
@@ -47,7 +47,7 @@ struct Depermaid: CommandPlugin {
         includeExecutable: Bool,
         includeProduct: Bool
     ) -> Flowchart {
-        var flowchart = Flowchart(direction: direction)
+        var dependencyTree = DependencyTree()
         sourceModules
             .filter { module in
                 return  switch (module.kind) {
@@ -73,14 +73,14 @@ struct Depermaid: CommandPlugin {
             .forEach { module in
                 switch (module.kind) {
                 case .generic:
-                    flowchart.append(Node(module.name))
 
+                    dependencyTree.addDependency(from: Node(module.name))
                 case .executable:
-                    flowchart.append(Node(module.name, shape: .stadium))
 
+                    dependencyTree.addDependency(from: Node(module.name, shape: .stadium))
                 case .test:
-                    flowchart.append(Node(module.name, shape: .hexagon))
 
+                    dependencyTree.addDependency(from: Node(module.name, shape: .hexagon))
                 case .snippet:
                     break
 
@@ -107,16 +107,24 @@ struct Depermaid: CommandPlugin {
                     .forEach { dependencies in
                         switch dependencies {
                         case let .target(target):
-                            flowchart.append(Node(module.name), Node(target.name))
 
+                            dependencyTree.addDependency(from: Node(module.name), to: Node(target.name))
                         case let .product(product):
-                            flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
 
+                            dependencyTree.addDependency(from: Node(module.name), to: Node(product.name, shape: .subroutine))
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }
                     }
             }
+        var flowchart = Flowchart(direction: direction)
+        var dependencies = dependencyTree.dependencies
+        for (firstNode, secondNodes) in dependencies.sorted(by: { $0.key.id < $1.key.id }) {
+            flowchart.append(firstNode)
+            for secondNode in secondNodes.sorted(by: { $0.id < $1.id }) {
+                flowchart.append(firstNode, secondNode)
+            }
+        }
         return flowchart
     }
 }

@@ -14,8 +14,12 @@ struct Node: Hashable, Equatable {
         self.shape = shape
     }
     
-    static func == (lhs: Node, rhs: Node) -> Bool{
+    static func == (lhs: Node, rhs: Node) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

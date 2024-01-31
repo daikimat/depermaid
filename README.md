@@ -49,8 +49,7 @@ $ swift package plugin depermaid --test
 ```mermaid
 flowchart TD
     AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
+    AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
     Dog-->AnimalClient
     Example-->Cat
@@ -103,8 +102,7 @@ $ swift package plugin depermaid --test --executable --product
 ```mermaid
 flowchart TD
     AnimalClient-->LifeCore[[LifeCore]]
-    AnimalClientTests-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
+    AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
     Dog-->AnimalClient
     Example-->Cat
@@ -128,8 +126,7 @@ flowchart LR
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    ExecutableExample-->Dog
-    ExecutableExample([ExecutableExample])
+    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ## Examples

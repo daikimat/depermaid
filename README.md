@@ -28,11 +28,8 @@
 ```mermaid
 flowchart TD
     AnimalClient
-    Cat
     Cat-->AnimalClient
-    Dog
     Dog-->AnimalClient
-    Example
     Example-->Cat
     Example-->Dog
 ```
@@ -53,13 +50,9 @@ $ swift package plugin depermaid --test
 flowchart TD
     AnimalClient
     AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests
     AnimalClientTests-->AnimalClient
-    Cat
     Cat-->AnimalClient
-    Dog
     Dog-->AnimalClient
-    Example
     Example-->Cat
     Example-->Dog
 ```
@@ -75,14 +68,10 @@ $ swift package plugin depermaid --executable
 ```mermaid
 flowchart TD
     AnimalClient
-    Cat
     Cat-->AnimalClient
-    Dog
     Dog-->AnimalClient
-    Example
     Example-->Cat
     Example-->Dog
-    ExecutableExample([ExecutableExample])
     ExecutableExample([ExecutableExample])-->Dog
 ```
 
@@ -96,13 +85,9 @@ $ swift package plugin depermaid --product
 
 ```mermaid
 flowchart TD
-    AnimalClient
     AnimalClient-->LifeCore[[LifeCore]]
-    Cat
     Cat-->AnimalClient
-    Dog
     Dog-->AnimalClient
-    Example
     Example-->Cat
     Example-->Dog
 ```
@@ -117,19 +102,13 @@ $ swift package plugin depermaid --test --executable --product
 
 ```mermaid
 flowchart TD
-    AnimalClient
     AnimalClient-->LifeCore[[LifeCore]]
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests
     AnimalClientTests-->AnimalClient
-    Cat
+    AnimalClientTests{{AnimalClientTests}}
     Cat-->AnimalClient
-    Dog
     Dog-->AnimalClient
-    Example
     Example-->Cat
     Example-->Dog
-    ExecutableExample([ExecutableExample])
     ExecutableExample([ExecutableExample])-->Dog
 ```
 
@@ -143,20 +122,14 @@ $ swift package plugin depermaid --direction LR --test --executable --product
 
 ```mermaid
 flowchart LR
-    AnimalClient
     AnimalClient-->LifeCore[[LifeCore]]
-    AnimalClientTests
-    AnimalClientTests-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    Cat
+    AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
-    Dog
     Dog-->AnimalClient
-    Example
     Example-->Cat
     Example-->Dog
+    ExecutableExample-->Dog
     ExecutableExample([ExecutableExample])
-    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ## Examples

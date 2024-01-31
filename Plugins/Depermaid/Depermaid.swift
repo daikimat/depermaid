@@ -120,7 +120,9 @@ struct Depermaid: CommandPlugin {
         var flowchart = Flowchart(direction: direction)
         var dependencies = dependencyTree.dependencies
         for (firstNode, secondNodes) in dependencies.sorted(by: { $0.key.id < $1.key.id }) {
-            flowchart.append(firstNode)
+            if secondNodes.isEmpty {
+                flowchart.append(firstNode)
+            }
             for secondNode in secondNodes.sorted(by: { $0.id < $1.id }) {
                 flowchart.append(firstNode, secondNode)
             }

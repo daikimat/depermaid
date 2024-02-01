@@ -44,7 +44,7 @@ struct DependencyTree {
                 }
                 let otherChildNodes = filterdChildrenNodes.subtracting([childNode])
                 for otherNode in otherChildNodes {
-                    if find(of: otherNode, startingFrom: childNode) {
+                    if find(of: otherNode, startingFrom: childNode, ignore: parentNode) {
                         filterdChildrenNodes.remove(otherNode)
                         continue
                     }
@@ -56,7 +56,7 @@ struct DependencyTree {
         return DependencyTree(dependencies: filteredDependencies)
     }
     
-    private func find(of target: Node, startingFrom source: Node) -> Bool {
+    private func find(of target: Node, startingFrom source: Node, ignore: Node) -> Bool {
         if dependencies[source] == nil {
             return false
         }
@@ -69,6 +69,9 @@ struct DependencyTree {
         
         while !depthQueue.isEmpty {
             let current = depthQueue.removeFirst()
+            if current == ignore {
+                continue
+            }
             
             if current == target {
                 return true

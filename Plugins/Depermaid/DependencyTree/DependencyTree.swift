@@ -42,7 +42,7 @@ struct DependencyTree {
                 if childNode == parentNode {
                     continue
                 }
-                var otherChildNodes = filterdChildrenNodes.subtracting([childNode])
+                let otherChildNodes = filterdChildrenNodes.subtracting([childNode])
                 for otherNode in otherChildNodes {
                     if find(of: otherNode, startingFrom: childNode) {
                         filterdChildrenNodes.remove(otherNode)
@@ -57,7 +57,7 @@ struct DependencyTree {
     }
     
     private func find(of target: Node, startingFrom source: Node) -> Bool {
-        guard let dependenciesOfSource = dependencies[source] else {
+        if dependencies[source] == nil {
             return false
         }
         

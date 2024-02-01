@@ -21,13 +21,13 @@ final class MermaidTests: XCTestCase {
         let stadiumNodeActual = "squareNode([squareNode])"
         XCTAssertEqual(stadiumNode.toString(), stadiumNodeActual)
 
-        let hexagonNode = Node("hexagonNode", shape: .hexagon)
-        let hexagonNodeActual = "hexagonNode{{hexagonNode}}"
-        XCTAssertEqual(hexagonNode.toString(), hexagonNodeActual)
-
         let subroutineNode = Node("subroutineNode", shape: .subroutine)
         let subroutineNodeActual = "subroutineNode[[subroutineNode]]"
         XCTAssertEqual(subroutineNode.toString(), subroutineNodeActual)
+
+        let hexagonNode = Node("hexagonNode", shape: .hexagon)
+        let hexagonNodeActual = "hexagonNode{{hexagonNode}}"
+        XCTAssertEqual(hexagonNode.toString(), hexagonNodeActual)
     }
 
     func testFlowChartItemToString() {

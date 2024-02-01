@@ -131,7 +131,7 @@ flowchart LR
 
 ### Transitive Dependencies Only
 
-Packages that don't rely on many transitive dependencies will display a complex graph like this one:
+For packages with a limited reliance on transitive dependencies, the generated graph may appear complex, as illustrated below:
 
 ```mermaid
 flowchart LR
@@ -148,11 +148,13 @@ flowchart LR
     E
 ```
 
-Run the following command to include only transitive dependencies in the generated Mermaid diagram. This option helps simplify the graph by omitting duplicate arrows in the presence of transitive dependencies:
+To simplify the graph and focus solely on transitive dependencies, run the following command:
 
 ```bash
 $ swift package plugin depermaid --direction LR --transitive-only
 ```
+
+The resulting Mermaid diagram will show a clearer representation by omitting duplicate arrows:
 
 ```mermaid
 flowchart LR
@@ -162,6 +164,8 @@ flowchart LR
     D-->E
     E
 ```
+
+This option is particularly useful when dealing with packages that have few transitive dependencies, enhancing clarity in the visualization of the dependency graph.
 
 ## Examples
 

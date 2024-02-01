@@ -8,7 +8,7 @@ struct Depermaid: CommandPlugin {
             print(
                 """
                 USAGE: swift package depermaid
-                
+
                 OPTIONS:
                   --direction <direction> Specify the direction for the Mermaid diagram.
                                           Available options:
@@ -26,21 +26,21 @@ struct Depermaid: CommandPlugin {
             )
             return
         }
-        
+
         let dependencyTree = createDependencyTree(
             from: context.package.sourceModules,
             includeTest: (argExtractor.extractFlag(named: "test") > 0),
             includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
             includeProduct: (argExtractor.extractFlag(named: "product") > 0)
         )
-        
+
         let direction = Direction(
             rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
         ) ?? Direction.TD
         let flowchart = dependencyTree.createFlowchart(direction: direction)
         print(flowchart.toString())
     }
-    
+
     private func createDependencyTree(
         from sourceModules: [SourceModuleTarget],
         includeTest: Bool,
@@ -53,19 +53,19 @@ struct Depermaid: CommandPlugin {
                 return  switch (module.kind) {
                 case .generic:
                     true
-                    
+
                 case .executable:
                     includeExecutable
-                    
+
                 case .test:
                     includeTest
-                    
+
                 case .snippet:
                     false
-                    
+
                 case .macro:
                     false
-                    
+
                 @unknown default:
                     fatalError("unknown kind")
                 }
@@ -74,32 +74,32 @@ struct Depermaid: CommandPlugin {
                 switch (module.kind) {
                 case .generic:
                     dependencyTree.addDependency(from: Node(module.name))
-                    
+
                 case .executable:
                     dependencyTree.addDependency(from: Node(module.name, shape: .stadium))
-                    
+
                 case .test:
                     dependencyTree.addDependency(from: Node(module.name, shape: .hexagon))
-                    
+
                 case .snippet:
                     break
-                    
+
                 case .macro:
                     break
-                    
+
                 @unknown default:
                     fatalError("unknown kind")
                 }
-                
+
                 module.dependencies
                     .filter { dependencies in
                         switch dependencies {
                         case .target(_):
                             true
-                            
+
                         case .product(_):
                             includeProduct
-                            
+
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }
@@ -108,10 +108,10 @@ struct Depermaid: CommandPlugin {
                         switch dependencies {
                         case let .target(target):
                             dependencyTree.addDependency(from: Node(module.name), to: Node(target.name))
-                            
+
                         case let .product(product):
                             dependencyTree.addDependency(from: Node(module.name), to: Node(product.name, shape: .subroutine))
-                            
+
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }

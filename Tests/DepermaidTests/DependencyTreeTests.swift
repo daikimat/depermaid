@@ -24,7 +24,7 @@ final class DependencyTreeTests: XCTestCase {
             nodeC: [nodeA],
         ])
     }
-    
+
     func testCreateFlowchart_sorted_alphabetically() {
         var sut = DependencyTree()
         let nodeA = Node("A")
@@ -64,7 +64,7 @@ final class DependencyTreeTests: XCTestCase {
             nodeC: [nodeA],
         ])
     }
-    
+
     func testFilterTransitiveDependencies_transitive_dependencies() {
         var dependencyTree = DependencyTree()
         let nodeA = Node("A")
@@ -78,7 +78,7 @@ final class DependencyTreeTests: XCTestCase {
         dependencyTree.addDependency(from: nodeA, to: nodeD)
         dependencyTree.addDependency(from: nodeA, to: nodeC)
         dependencyTree.addDependency(from: nodeA, to: nodeB)
-        
+
         let sut = dependencyTree.filterTransitiveDependencies()
 
         XCTAssertEqual(sut.dependencies, [

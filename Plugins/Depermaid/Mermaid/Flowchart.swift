@@ -5,7 +5,7 @@
 //  Created by daiki-matsumoto on 2024/01/07.
 //
 
-struct Flowchart {
+struct Flowchart: Equatable {
     let direction: Direction
     var items: [FlowchartItem] = []
     

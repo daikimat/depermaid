@@ -10,7 +10,7 @@ let package = Package(
     ],
     targets: [
         .testTarget(
-            name: "MermaidTests",
+            name: "DepermaidTests",
             dependencies: [
                 // Restriction that Test cannot depend on Plugin, so use symbolic links for testing.
             ]

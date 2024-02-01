@@ -21,6 +21,7 @@ struct Depermaid: CommandPlugin {
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
+                  --transitive-only       Only transitive dependencies, omitting duplicate arrows.
                   --help                  Show help information.
                 """
             )
@@ -37,7 +38,12 @@ struct Depermaid: CommandPlugin {
         let direction = Direction(
             rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
         ) ?? Direction.TD
-        let flowchart = dependencyTree.createFlowchart(direction: direction)
+        let flowchart: Flowchart
+        if argExtractor.extractFlag(named: "transitive-only") > 0 {
+            flowchart = dependencyTree.filterTransitiveDependencies().createFlowchart(direction: direction)
+        } else {
+            flowchart = dependencyTree.createFlowchart(direction: direction)
+        }
         print(flowchart.toString())
     }
 

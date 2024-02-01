@@ -129,6 +129,40 @@ flowchart LR
     ExecutableExample([ExecutableExample])-->Dog
 ```
 
+### Transitive Dependencies Only
+
+Packages that don't rely on many transitive dependencies will display a complex graph like this one:
+
+```mermaid
+flowchart LR
+    A-->B
+    A-->C
+    A-->D
+    A-->E
+    B-->C
+    B-->D
+    B-->E
+    C-->D
+    C-->E
+    D-->E
+    E
+```
+
+Run the following command to include only transitive dependencies in the generated Mermaid diagram. This option helps simplify the graph by omitting duplicate arrows in the presence of transitive dependencies:
+
+```bash
+$ swift package plugin depermaid --direction LR --transitive-only
+```
+
+```mermaid
+flowchart LR
+    A-->B
+    B-->C
+    C-->D
+    D-->E
+    E
+```
+
 ## Examples
 
 To demonstrate the capabilities of Depermaid, a sample project is provided in the `./Example/ExampleDepermaid.xcodeproj`.

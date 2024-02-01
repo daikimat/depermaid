@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D911C7772B46F29C00AFCB75 /* Example in Frameworks */ = {isa = PBXBuildFile; productRef = D911C7762B46F29C00AFCB75 /* Example */; };
 		D93314D32B46DE6F00D95331 /* ExampleDepermaidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93314D22B46DE6F00D95331 /* ExampleDepermaidApp.swift */; };
 		D93314D52B46DE6F00D95331 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93314D42B46DE6F00D95331 /* ContentView.swift */; };
 		D93314D72B46DE7100D95331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93314D62B46DE7100D95331 /* Assets.xcassets */; };
@@ -16,13 +15,14 @@
 
 /* Begin PBXFileReference section */
 		D911C7712B46EE8E00AFCB75 /* ExampleDepermaid.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExampleDepermaid.xctestplan; sourceTree = "<group>"; };
-		D911C7752B46F1FE00AFCB75 /* Package */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Package; sourceTree = "<group>"; };
 		D93314CF2B46DE6F00D95331 /* ExampleDepermaid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleDepermaid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93314D22B46DE6F00D95331 /* ExampleDepermaidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDepermaidApp.swift; sourceTree = "<group>"; };
 		D93314D42B46DE6F00D95331 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D93314D62B46DE7100D95331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93314D82B46DE7100D95331 /* ExampleDepermaid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExampleDepermaid.entitlements; sourceTree = "<group>"; };
 		D93314DA2B46DE7100D95331 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D98459862B6BEF1F00C0AB63 /* AnimalPackages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AnimalPackages; sourceTree = "<group>"; };
+		D98459882B6BF07600C0AB63 /* TransitivePackages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TransitivePackages; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +30,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D911C7772B46F29C00AFCB75 /* Example in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +47,8 @@
 			isa = PBXGroup;
 			children = (
 				D911C7712B46EE8E00AFCB75 /* ExampleDepermaid.xctestplan */,
-				D911C7752B46F1FE00AFCB75 /* Package */,
+				D98459882B6BF07600C0AB63 /* TransitivePackages */,
+				D98459862B6BEF1F00C0AB63 /* AnimalPackages */,
 				D93314D12B46DE6F00D95331 /* ExampleDepermaid */,
 				D93314D02B46DE6F00D95331 /* Products */,
 				D911C7722B46EEEE00AFCB75 /* Frameworks */,
@@ -101,7 +101,6 @@
 			);
 			name = ExampleDepermaid;
 			packageProductDependencies = (
-				D911C7762B46F29C00AFCB75 /* Example */,
 			);
 			productName = ExampleDepermaid;
 			productReference = D93314CF2B46DE6F00D95331 /* ExampleDepermaid.app */;
@@ -311,7 +310,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExampleDepermaid/ExampleDepermaid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ExampleDepermaid/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -348,7 +347,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExampleDepermaid/ExampleDepermaid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ExampleDepermaid/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -399,13 +398,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D911C7762B46F29C00AFCB75 /* Example */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Example;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D93314C72B46DE6F00D95331 /* Project object */;
 }

@@ -27,26 +27,26 @@ struct Depermaid: CommandPlugin {
             return
         }
         
-        let direction = Direction(
-            rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
-        ) ?? Direction.TD
-        let flowchart = createFlowchart(
+        let dependencyTree = createDependencyTree(
             from: context.package.sourceModules,
-            direction: direction,
             includeTest: (argExtractor.extractFlag(named: "test") > 0),
             includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
             includeProduct: (argExtractor.extractFlag(named: "product") > 0)
         )
+        
+        let direction = Direction(
+            rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
+        ) ?? Direction.TD
+        let flowchart = dependencyTree.createFlowchart(direction: direction)
         print(flowchart.toString())
     }
     
-    private func createFlowchart(
+    private func createDependencyTree(
         from sourceModules: [SourceModuleTarget],
-        direction: Direction,
         includeTest: Bool,
         includeExecutable: Bool,
         includeProduct: Bool
-    ) -> Flowchart {
+    ) -> DependencyTree {
         var dependencyTree = DependencyTree()
         sourceModules
             .filter { module in
@@ -117,23 +117,6 @@ struct Depermaid: CommandPlugin {
                         }
                     }
             }
-        return createFlowchart(from: dependencyTree, direction: direction)
-    }
-    
-    func createFlowchart(
-        from dependencyTree: DependencyTree,
-        direction: Direction
-    ) -> Flowchart {
-        var flowchart = Flowchart(direction: direction)
-        var dependencies = dependencyTree.dependencies
-        for (firstNode, secondNodes) in dependencies.sorted(by: { $0.key.id < $1.key.id }) {
-            if secondNodes.isEmpty {
-                flowchart.append(firstNode)
-            }
-            for secondNode in secondNodes.sorted(by: { $0.id < $1.id }) {
-                flowchart.append(firstNode, secondNode)
-            }
-        }
-        return flowchart
+        return dependencyTree
     }
 }

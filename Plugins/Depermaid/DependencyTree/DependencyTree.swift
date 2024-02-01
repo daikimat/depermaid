@@ -17,6 +17,21 @@ struct DependencyTree {
         }
     }
     
+    func createFlowchart(
+        direction: Direction
+    ) -> Flowchart {
+        var flowchart = Flowchart(direction: direction)
+        for (firstNode, secondNodes) in dependencies.sorted(by: { $0.key.id < $1.key.id }) {
+            if secondNodes.isEmpty {
+                flowchart.append(firstNode)
+            }
+            for secondNode in secondNodes.sorted(by: { $0.id < $1.id }) {
+                flowchart.append(firstNode, secondNode)
+            }
+        }
+        return flowchart
+    }
+    
     func filterTransitiveDependencies() -> DependencyTree {
         var filteredDependencies: [Node: Set<Node>] = [:]
         

@@ -117,6 +117,13 @@ struct Depermaid: CommandPlugin {
                         }
                     }
             }
+        return createFlowchart(from: dependencyTree, direction: direction)
+    }
+    
+    func createFlowchart(
+        from dependencyTree: DependencyTree,
+        direction: Direction
+    ) -> Flowchart {
         var flowchart = Flowchart(direction: direction)
         var dependencies = dependencyTree.dependencies
         for (firstNode, secondNodes) in dependencies.sorted(by: { $0.key.id < $1.key.id }) {

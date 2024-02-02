@@ -32,14 +32,14 @@ final class MermaidTests: XCTestCase {
 
     func testFlowChartItemToString() {
         let normalNode = Node("normalNode")
-        let normalNodeOnlyflowchartItem = FlowchartItem(normalNode)
-        let normalNodeOnlyflowchartItemActual = "normalNode"
-        XCTAssertEqual(normalNodeOnlyflowchartItem.toString(), normalNodeOnlyflowchartItemActual)
+        let normalNodeOnlyFlowchartItem = FlowchartItem(normalNode)
+        let normalNodeOnlyFlowchartItemActual = "normalNode"
+        XCTAssertEqual(normalNodeOnlyFlowchartItem.toString(), normalNodeOnlyFlowchartItemActual)
 
         let hexagonNode = Node("hexagonNode", shape: .hexagon)
-        let linkedNodeflowchartItem = FlowchartItem(normalNode, hexagonNode)
-        let linkedNodeflowchartItemActual = "normalNode-->hexagonNode{{hexagonNode}}"
-        XCTAssertEqual(linkedNodeflowchartItem.toString(), linkedNodeflowchartItemActual)
+        let linkedNodeFlowchartItem = FlowchartItem(normalNode, hexagonNode)
+        let linkedNodeFlowchartItemActual = "normalNode-->hexagonNode{{hexagonNode}}"
+        XCTAssertEqual(linkedNodeFlowchartItem.toString(), linkedNodeFlowchartItemActual)
     }
 
     func testFlowChartToString() {

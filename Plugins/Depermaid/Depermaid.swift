@@ -40,7 +40,7 @@ struct Depermaid: CommandPlugin {
         ) ?? Direction.TD
         let flowchart: Flowchart
         if argExtractor.extractFlag(named: "minimal") > 0 {
-            flowchart = dependencyTree.filterDupricateDependencies().createFlowchart(direction: direction)
+            flowchart = dependencyTree.filterDuplicateDependencies().createFlowchart(direction: direction)
         } else {
             flowchart = dependencyTree.createFlowchart(direction: direction)
         }

@@ -44,7 +44,7 @@ final class DependencyTreeTests: XCTestCase {
         XCTAssertEqual(sut.createFlowchart(direction: .LR), flowchart)
     }
 
-    func testFilterDupricateDependencies() {
+    func testFilterDuplicateDependencies() {
         var dependencyTree = DependencyTree()
         let nodeA = Node("A")
         let nodeB = Node("B")
@@ -58,7 +58,7 @@ final class DependencyTreeTests: XCTestCase {
         dependencyTree.addDependency(from: nodeA, to: nodeC)
         dependencyTree.addDependency(from: nodeA, to: nodeB)
 
-        let sut = dependencyTree.filterDupricateDependencies()
+        let sut = dependencyTree.filterDuplicateDependencies()
 
         XCTAssertEqual(sut.dependencies, [
             nodeA: [nodeB],
@@ -68,7 +68,7 @@ final class DependencyTreeTests: XCTestCase {
         ])
     }
 
-    func testFilterDupricateDependencies_loop_pattern() {
+    func testFilterDuplicateDependencies_loop_pattern() {
         var dependencyTree = DependencyTree()
         let nodeA = Node("A")
         let nodeB = Node("B")
@@ -80,7 +80,7 @@ final class DependencyTreeTests: XCTestCase {
         dependencyTree.addDependency(from: nodeB, to: nodeD)
         dependencyTree.addDependency(from: nodeA, to: nodeB)
 
-        let sut = dependencyTree.filterDupricateDependencies()
+        let sut = dependencyTree.filterDuplicateDependencies()
 
         XCTAssertEqual(sut.dependencies, [
             nodeA: [nodeB, nodeC],

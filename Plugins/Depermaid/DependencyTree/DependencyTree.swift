@@ -32,24 +32,24 @@ struct DependencyTree {
         return flowchart
     }
 
-    func filterDupricateDependencies() -> DependencyTree {
+    func filterDuplicateDependencies() -> DependencyTree {
         var filteredDependencies: [Node: Set<Node>] = [:]
 
         for (parentNode, childrenNode) in dependencies {
             filteredDependencies[parentNode] = Set<Node>()
-            var filterdChildrenNodes = childrenNode
-            for childNode in filterdChildrenNodes {
+            var filteredChildrenNodes = childrenNode
+            for childNode in filteredChildrenNodes {
                 if childNode == parentNode {
                     continue
                 }
-                let otherChildNodes = filterdChildrenNodes.subtracting([childNode])
+                let otherChildNodes = filteredChildrenNodes.subtracting([childNode])
                 for otherNode in otherChildNodes {
                     if find(of: otherNode, startingFrom: childNode, ignore: parentNode) {
-                        filterdChildrenNodes.remove(otherNode)
+                        filteredChildrenNodes.remove(otherNode)
                         continue
                     }
                 }
-                filteredDependencies[parentNode] = filterdChildrenNodes
+                filteredDependencies[parentNode] = filteredChildrenNodes
             }
         }
 

@@ -3,7 +3,7 @@
 [depermaid](https://github.com/daikimat/depermaid) is a Swift Package Manager plugin that generates [Mermaid](https://mermaid-js.github.io/mermaid/) diagrams representing dependencies within your Swift package.
 
 ## Requirements
-``` swift
+```swift
 //swift-tools-version:5.9
 ```
 
@@ -129,9 +129,9 @@ flowchart LR
     ExecutableExample([ExecutableExample])-->Dog
 ```
 
-### Transitive Dependencies Only
+### Minimal Dependencies
 
-For packages with a limited reliance on transitive dependencies, the generated graph may appear complex, as illustrated below:
+For packages with a limited reliance on dependencies, the generated graph may appear complex, as illustrated below:
 
 ```mermaid
 flowchart LR
@@ -148,10 +148,10 @@ flowchart LR
     E
 ```
 
-To simplify the graph and focus solely on transitive dependencies, run the following command:
+To simplify the graph and focus solely on essential dependencies, run the following command:
 
 ```bash
-$ swift package plugin depermaid --direction LR --transitive-only
+$ swift package plugin depermaid --direction LR --minimal
 ```
 
 The resulting Mermaid diagram will show a clearer representation by omitting duplicate arrows:
@@ -164,8 +164,6 @@ flowchart LR
     D-->E
     E
 ```
-
-This option is particularly useful when dealing with packages that have few transitive dependencies, enhancing clarity in the visualization of the dependency graph.
 
 ## Examples
 

@@ -21,7 +21,7 @@ struct Depermaid: CommandPlugin {
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
-                  --transitive-only       Only transitive dependencies, omitting duplicate arrows.
+                  --minimal               Generate a minimal Mermaid diagram by including only essential dependencies.
                   --help                  Show help information.
                 """
             )
@@ -39,8 +39,8 @@ struct Depermaid: CommandPlugin {
             rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
         ) ?? Direction.TD
         let flowchart: Flowchart
-        if argExtractor.extractFlag(named: "transitive-only") > 0 {
-            flowchart = dependencyTree.filterTransitiveDependencies().createFlowchart(direction: direction)
+        if argExtractor.extractFlag(named: "minimal") > 0 {
+            flowchart = dependencyTree.filterDupricateDependencies().createFlowchart(direction: direction)
         } else {
             flowchart = dependencyTree.createFlowchart(direction: direction)
         }

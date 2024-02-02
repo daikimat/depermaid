@@ -44,28 +44,7 @@ final class DependencyTreeTests: XCTestCase {
         XCTAssertEqual(sut.createFlowchart(direction: .LR), flowchart)
     }
 
-    func testFilterTransitiveDependencies_loop_pattern() {
-        var dependencyTree = DependencyTree()
-        let nodeA = Node("A")
-        let nodeB = Node("B")
-        let nodeC = Node("C")
-        let nodeD = Node("D")
-        dependencyTree.addDependency(from: nodeA, to: nodeC)
-        dependencyTree.addDependency(from: nodeA, to: nodeD)
-        dependencyTree.addDependency(from: nodeC, to: nodeA)
-        dependencyTree.addDependency(from: nodeB, to: nodeD)
-        dependencyTree.addDependency(from: nodeA, to: nodeB)
-
-        let sut = dependencyTree.filterTransitiveDependencies()
-
-        XCTAssertEqual(sut.dependencies, [
-            nodeA: [nodeB, nodeC],
-            nodeB: [nodeD],
-            nodeC: [nodeA],
-        ])
-    }
-
-    func testFilterTransitiveDependencies_transitive_dependencies() {
+    func testFilterDupricateDependencies() {
         var dependencyTree = DependencyTree()
         let nodeA = Node("A")
         let nodeB = Node("B")
@@ -79,13 +58,34 @@ final class DependencyTreeTests: XCTestCase {
         dependencyTree.addDependency(from: nodeA, to: nodeC)
         dependencyTree.addDependency(from: nodeA, to: nodeB)
 
-        let sut = dependencyTree.filterTransitiveDependencies()
+        let sut = dependencyTree.filterDupricateDependencies()
 
         XCTAssertEqual(sut.dependencies, [
             nodeA: [nodeB],
             nodeB: [nodeC],
             nodeC: [nodeD],
             nodeD: [],
+        ])
+    }
+
+    func testFilterDupricateDependencies_loop_pattern() {
+        var dependencyTree = DependencyTree()
+        let nodeA = Node("A")
+        let nodeB = Node("B")
+        let nodeC = Node("C")
+        let nodeD = Node("D")
+        dependencyTree.addDependency(from: nodeA, to: nodeC)
+        dependencyTree.addDependency(from: nodeA, to: nodeD)
+        dependencyTree.addDependency(from: nodeC, to: nodeA)
+        dependencyTree.addDependency(from: nodeB, to: nodeD)
+        dependencyTree.addDependency(from: nodeA, to: nodeB)
+
+        let sut = dependencyTree.filterDupricateDependencies()
+
+        XCTAssertEqual(sut.dependencies, [
+            nodeA: [nodeB, nodeC],
+            nodeB: [nodeD],
+            nodeC: [nodeA],
         ])
     }
 }

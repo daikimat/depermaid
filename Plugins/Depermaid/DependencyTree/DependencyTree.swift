@@ -32,7 +32,7 @@ struct DependencyTree {
         return flowchart
     }
 
-    func filterTransitiveDependencies() -> DependencyTree {
+    func filterDupricateDependencies() -> DependencyTree {
         var filteredDependencies: [Node: Set<Node>] = [:]
 
         for (parentNode, childrenNode) in dependencies {

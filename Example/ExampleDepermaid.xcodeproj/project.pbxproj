@@ -21,8 +21,8 @@
 		D93314D62B46DE7100D95331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93314D82B46DE7100D95331 /* ExampleDepermaid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExampleDepermaid.entitlements; sourceTree = "<group>"; };
 		D93314DA2B46DE7100D95331 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D965BBC52B6D31BA00763871 /* ComplexPackages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ComplexPackages; sourceTree = "<group>"; };
 		D98459862B6BEF1F00C0AB63 /* AnimalPackages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AnimalPackages; sourceTree = "<group>"; };
-		D98459882B6BF07600C0AB63 /* TransitivePackages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TransitivePackages; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				D911C7712B46EE8E00AFCB75 /* ExampleDepermaid.xctestplan */,
-				D98459882B6BF07600C0AB63 /* TransitivePackages */,
+				D965BBC52B6D31BA00763871 /* ComplexPackages */,
 				D98459862B6BEF1F00C0AB63 /* AnimalPackages */,
 				D93314D12B46DE6F00D95331 /* ExampleDepermaid */,
 				D93314D02B46DE6F00D95331 /* Products */,

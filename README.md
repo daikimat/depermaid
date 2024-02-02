@@ -131,7 +131,7 @@ flowchart LR
 
 ### Minimal Dependencies
 
-For packages with a limited reliance on dependencies, the generated graph may appear complex, as illustrated below:
+For packages with a deep hierarchy of direct dependencies, the generated graph may appear complex, as illustrated below:
 
 ```mermaid
 flowchart LR

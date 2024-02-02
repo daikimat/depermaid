@@ -24,10 +24,10 @@ replacement=$(xcrun --sdk macosx swift package --package-path $root/Example/Anim
 echo $replacement
 perl -i -0777 -pe "s/(\# Direction.*?)(\`\`\`mermaid.*?\`\`\`)/\$1$replacement/s" $root/README.md
 
-replacement=$(xcrun --sdk macosx swift package --package-path $root/Example/TransitivePackages depermaid --direction LR)
+replacement=$(xcrun --sdk macosx swift package --package-path $root/Example/ComplexPackages depermaid --direction LR)
 echo $replacement
-perl -i -0777 -pe "s/(\# Transitive Dependencies Only.*?)(\`\`\`mermaid.*?\`\`\`)/\$1$replacement/s" $root/README.md
+perl -i -0777 -pe "s/(\# Minimal Dependencies.*?)(\`\`\`mermaid.*?\`\`\`)/\$1$replacement/s" $root/README.md
 
-replacement=$(xcrun --sdk macosx swift package --package-path $root/Example/TransitivePackages depermaid --direction LR --transitive-only)
+replacement=$(xcrun --sdk macosx swift package --package-path $root/Example/ComplexPackages depermaid --direction LR --minimal)
 echo $replacement
-perl -i -0777 -pe "s/(\# Transitive Dependencies Only.*?\`\`\`mermaid.*?\`\`\`.*?)(\`\`\`mermaid.*?\`\`\`)/\$1$replacement/s" $root/README.md
+perl -i -0777 -pe "s/(\# Minimal Dependencies.*?\`\`\`mermaid.*?\`\`\`.*?)(\`\`\`mermaid.*?\`\`\`)/\$1$replacement/s" $root/README.md

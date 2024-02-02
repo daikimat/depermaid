@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ExampleDepermaidTransitivePackages",
+    name: "ExampleDepermaidComplexPackages",
     dependencies: [
         .package(path: "../../../depermaid"),
     ],

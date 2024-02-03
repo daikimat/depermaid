@@ -21,33 +21,39 @@ struct Depermaid: CommandPlugin {
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
+                  --minimal               Generate a minimal Mermaid diagram by including only essential dependencies.
                   --help                  Show help information.
                 """
             )
             return
         }
 
-        let direction = Direction(
-            rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
-        ) ?? Direction.TD
-        let flowchart = createFlowchart(
+        let dependencyTree = createDependencyTree(
             from: context.package.sourceModules,
-            direction: direction,
             includeTest: (argExtractor.extractFlag(named: "test") > 0),
             includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
             includeProduct: (argExtractor.extractFlag(named: "product") > 0)
         )
+
+        let direction = Direction(
+            rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
+        ) ?? Direction.TD
+        let flowchart: Flowchart
+        if argExtractor.extractFlag(named: "minimal") > 0 {
+            flowchart = dependencyTree.filterDuplicateDependencies().createFlowchart(direction: direction)
+        } else {
+            flowchart = dependencyTree.createFlowchart(direction: direction)
+        }
         print(flowchart.toString())
     }
-    
-    private func createFlowchart(
+
+    private func createDependencyTree(
         from sourceModules: [SourceModuleTarget],
-        direction: Direction,
         includeTest: Bool,
         includeExecutable: Bool,
         includeProduct: Bool
-    ) -> Flowchart {
-        var flowchart = Flowchart(direction: direction)
+    ) -> DependencyTree {
+        var dependencyTree = DependencyTree()
         sourceModules
             .filter { module in
                 return  switch (module.kind) {
@@ -73,13 +79,13 @@ struct Depermaid: CommandPlugin {
             .forEach { module in
                 switch (module.kind) {
                 case .generic:
-                    flowchart.append(Node(module.name))
+                    dependencyTree.addDependency(from: Node(module.name))
 
                 case .executable:
-                    flowchart.append(Node(module.name, shape: .stadium))
+                    dependencyTree.addDependency(from: Node(module.name, shape: .stadium))
 
                 case .test:
-                    flowchart.append(Node(module.name, shape: .hexagon))
+                    dependencyTree.addDependency(from: Node(module.name, shape: .hexagon))
 
                 case .snippet:
                     break
@@ -107,16 +113,16 @@ struct Depermaid: CommandPlugin {
                     .forEach { dependencies in
                         switch dependencies {
                         case let .target(target):
-                            flowchart.append(Node(module.name), Node(target.name))
+                            dependencyTree.addDependency(from: Node(module.name), to: Node(target.name))
 
                         case let .product(product):
-                            flowchart.append(Node(module.name), Node(product.name, shape: .subroutine))
+                            dependencyTree.addDependency(from: Node(module.name), to: Node(product.name, shape: .subroutine))
 
                         @unknown default:
                             fatalError("unknown type dependencies")
                         }
                     }
             }
-        return flowchart
+        return dependencyTree
     }
 }

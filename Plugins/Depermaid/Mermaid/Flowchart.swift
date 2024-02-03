@@ -1,18 +1,18 @@
 //
 //  Flowchart.swift
-//  
+//
 //
 //  Created by daiki-matsumoto on 2024/01/07.
 //
 
-struct Flowchart {
+struct Flowchart: Equatable {
     let direction: Direction
     var items: [FlowchartItem] = []
-    
+
     mutating func append(_ firstNode: Node, _ secondNode: Node? = nil) {
         self.items.append(FlowchartItem(firstNode, secondNode))
     }
-    
+
     init(direction: Direction) {
         self.direction = direction
     }

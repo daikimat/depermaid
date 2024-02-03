@@ -3,13 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ExampleDepermaid",
-    products: [
-        .library(
-            name: "Example",
-            targets: ["Example"]
-        )
-    ],
+    name: "ExampleDepermaidAnimalPackage",
     dependencies: [
         .package(path: "../../../depermaid"),
         .package(path: "./Library")

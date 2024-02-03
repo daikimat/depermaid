@@ -5,7 +5,7 @@
 //  Created by daiki-matsumoto on 2024/01/07.
 //
 
-struct FlowchartItem {
+struct FlowchartItem: Equatable {
     let firstNode: Node
     let secondNode: Node?
     init(_ firstNode: Node, _ secondNode: Node? = nil) {

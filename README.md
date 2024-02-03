@@ -3,7 +3,7 @@
 [depermaid](https://github.com/daikimat/depermaid) is a Swift Package Manager plugin that generates [Mermaid](https://mermaid-js.github.io/mermaid/) diagrams representing dependencies within your Swift package.
 
 ## Requirements
-``` swift
+```swift
 //swift-tools-version:5.9
 ```
 
@@ -27,14 +27,11 @@
 
 ```mermaid
 flowchart TD
-    Example
+    AnimalClient
+    Cat-->AnimalClient
+    Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClient
 ```
 
 ## Command Options
@@ -51,16 +48,12 @@ $ swift package plugin depermaid --test
 
 ```mermaid
 flowchart TD
-    Example
+    AnimalClient
+    AnimalClientTests{{AnimalClientTests}}-->AnimalClient
+    Cat-->AnimalClient
+    Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
-    AnimalClient
 ```
 
 ### Including Executable Targets
@@ -73,16 +66,12 @@ $ swift package plugin depermaid --executable
 
 ```mermaid
 flowchart TD
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
-    Example
+    AnimalClient
+    Cat-->AnimalClient
+    Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClient
+    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ### Including Products
@@ -95,15 +84,11 @@ $ swift package plugin depermaid --product
 
 ```mermaid
 flowchart TD
-    Example
+    AnimalClient-->LifeCore[[LifeCore]]
+    Cat-->AnimalClient
+    Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClient
-    AnimalClient-->LifeCore[[LifeCore]]
 ```
 
 ### Including All
@@ -116,19 +101,13 @@ $ swift package plugin depermaid --test --executable --product
 
 ```mermaid
 flowchart TD
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
-    Example
+    AnimalClient-->LifeCore[[LifeCore]]
+    AnimalClientTests{{AnimalClientTests}}-->AnimalClient
+    Cat-->AnimalClient
+    Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
-    AnimalClient
-    AnimalClient-->LifeCore[[LifeCore]]
+    ExecutableExample([ExecutableExample])-->Dog
 ```
 
 ### Direction
@@ -141,19 +120,49 @@ $ swift package plugin depermaid --direction LR --test --executable --product
 
 ```mermaid
 flowchart LR
-    ExecutableExample([ExecutableExample])
-    ExecutableExample-->Dog
-    Example
+    AnimalClient-->LifeCore[[LifeCore]]
+    AnimalClientTests{{AnimalClientTests}}-->AnimalClient
+    Cat-->AnimalClient
+    Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
-    Dog
-    Dog-->AnimalClient
-    Cat
-    Cat-->AnimalClient
-    AnimalClientTests{{AnimalClientTests}}
-    AnimalClientTests-->AnimalClient
-    AnimalClient
-    AnimalClient-->LifeCore[[LifeCore]]
+    ExecutableExample([ExecutableExample])-->Dog
+```
+
+### Minimal Dependencies
+
+For packages with a deep hierarchy of direct dependencies, the generated graph may appear complex, as illustrated below:
+
+```mermaid
+flowchart LR
+    A-->B
+    A-->C
+    A-->D
+    A-->E
+    B-->C
+    B-->D
+    B-->E
+    C-->D
+    C-->E
+    D-->E
+    E
+```
+
+To simplify the graph and focus solely on essential dependencies, run the following command:
+
+```bash
+$ swift package plugin depermaid --direction LR --minimal
+```
+
+The resulting Mermaid diagram will show a clearer representation by omitting duplicate arrows:
+
+```mermaid
+flowchart LR
+    A-->B
+    B-->C
+    C-->D
+    D-->E
+    E
 ```
 
 ## Examples

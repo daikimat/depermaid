@@ -12,7 +12,7 @@ final class MermaidTests: XCTestCase {
         let idOnlyNode = Node("normalNode")
         let idOnlyNodeActual = "normalNode"
         XCTAssertEqual(idOnlyNode.toString(), idOnlyNodeActual)
-        
+
         let squareNode = Node("squareNode", shape: .square)
         let squareNodeActual = "squareNode[squareNode]"
         XCTAssertEqual(squareNode.toString(), squareNodeActual)
@@ -20,28 +20,28 @@ final class MermaidTests: XCTestCase {
         let stadiumNode = Node("squareNode", shape: .stadium)
         let stadiumNodeActual = "squareNode([squareNode])"
         XCTAssertEqual(stadiumNode.toString(), stadiumNodeActual)
-        
-        let hexagonNode = Node("hexagonNode", shape: .hexagon)
-        let hexagonNodeActual = "hexagonNode{{hexagonNode}}"
-        XCTAssertEqual(hexagonNode.toString(), hexagonNodeActual)
 
         let subroutineNode = Node("subroutineNode", shape: .subroutine)
         let subroutineNodeActual = "subroutineNode[[subroutineNode]]"
         XCTAssertEqual(subroutineNode.toString(), subroutineNodeActual)
+
+        let hexagonNode = Node("hexagonNode", shape: .hexagon)
+        let hexagonNodeActual = "hexagonNode{{hexagonNode}}"
+        XCTAssertEqual(hexagonNode.toString(), hexagonNodeActual)
     }
 
     func testFlowChartItemToString() {
         let normalNode = Node("normalNode")
-        let normalNodeOnlyflowchartItem = FlowchartItem(normalNode)
-        let normalNodeOnlyflowchartItemActual = "normalNode"
-        XCTAssertEqual(normalNodeOnlyflowchartItem.toString(), normalNodeOnlyflowchartItemActual)
+        let normalNodeOnlyFlowchartItem = FlowchartItem(normalNode)
+        let normalNodeOnlyFlowchartItemActual = "normalNode"
+        XCTAssertEqual(normalNodeOnlyFlowchartItem.toString(), normalNodeOnlyFlowchartItemActual)
 
         let hexagonNode = Node("hexagonNode", shape: .hexagon)
-        let linkedNodeflowchartItem = FlowchartItem(normalNode, hexagonNode)
-        let linkedNodeflowchartItemActual = "normalNode-->hexagonNode{{hexagonNode}}"
-        XCTAssertEqual(linkedNodeflowchartItem.toString(), linkedNodeflowchartItemActual)
+        let linkedNodeFlowchartItem = FlowchartItem(normalNode, hexagonNode)
+        let linkedNodeFlowchartItemActual = "normalNode-->hexagonNode{{hexagonNode}}"
+        XCTAssertEqual(linkedNodeFlowchartItem.toString(), linkedNodeFlowchartItemActual)
     }
-    
+
     func testFlowChartToString() {
         var flowchart = Flowchart(direction: .TD)
         flowchart.append(Node("test1"))
@@ -58,7 +58,7 @@ final class MermaidTests: XCTestCase {
         """
         XCTAssertEqual(flowchart.toString(), actual)
     }
-    
+
     func testFlowChartDirectionToString() {
         let flowchartBT = Flowchart(direction: .BT)
 
@@ -68,7 +68,7 @@ final class MermaidTests: XCTestCase {
         ```
         """
         XCTAssertEqual(flowchartBT.toString(), actualBT)
-        
+
         let flowchartLR = Flowchart(direction: .LR)
 
         let actualLR = """
@@ -77,7 +77,7 @@ final class MermaidTests: XCTestCase {
         ```
         """
         XCTAssertEqual(flowchartLR.toString(), actualLR)
-        
+
         let flowchartRL = Flowchart(direction: .RL)
 
         let actualRL = """
@@ -86,7 +86,7 @@ final class MermaidTests: XCTestCase {
         ```
         """
         XCTAssertEqual(flowchartRL.toString(), actualRL)
-        
+
         let flowchartTB = Flowchart(direction: .TB)
 
         let actualTB = """
@@ -95,7 +95,7 @@ final class MermaidTests: XCTestCase {
         ```
         """
         XCTAssertEqual(flowchartTB.toString(), actualTB)
-        
+
         let flowchartTD = Flowchart(direction: .TD)
 
         let actualTD = """
@@ -105,5 +105,4 @@ final class MermaidTests: XCTestCase {
         """
         XCTAssertEqual(flowchartTD.toString(), actualTD)
     }
-
 }

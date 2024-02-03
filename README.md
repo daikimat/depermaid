@@ -144,7 +144,7 @@ flowchart LR
     B-->E
     C-->D
     C-->E
-    D-->E
+    D
     E
 ```
 
@@ -161,7 +161,8 @@ flowchart LR
     A-->B
     B-->C
     C-->D
-    D-->E
+    C-->E
+    D
     E
 ```
 

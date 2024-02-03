@@ -26,7 +26,7 @@
     The generated Mermaid diagram illustrates the dependencies between modules within your Swift package:
 
 ```mermaid
-flowchart TD
+flowchart LR
     AnimalClient
     Cat-->AnimalClient
     Dog-->AnimalClient
@@ -47,7 +47,7 @@ $ swift package plugin depermaid --test
 ```
 
 ```mermaid
-flowchart TD
+flowchart LR
     AnimalClient
     AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
@@ -65,7 +65,7 @@ $ swift package plugin depermaid --executable
 ```
 
 ```mermaid
-flowchart TD
+flowchart LR
     AnimalClient
     Cat-->AnimalClient
     Dog-->AnimalClient
@@ -83,7 +83,7 @@ $ swift package plugin depermaid --product
 ```
 
 ```mermaid
-flowchart TD
+flowchart LR
     AnimalClient-->LifeCore[[LifeCore]]
     Cat-->AnimalClient
     Dog-->AnimalClient
@@ -100,7 +100,7 @@ $ swift package plugin depermaid --test --executable --product
 ```
 
 ```mermaid
-flowchart TD
+flowchart LR
     AnimalClient-->LifeCore[[LifeCore]]
     AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
@@ -112,14 +112,14 @@ flowchart TD
 
 ### Direction
 
-You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, LR. By default, it's set to TD (Top-Down)."
+You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, LR. By default, it's set to LR."
 
 ```bash
-$ swift package plugin depermaid --direction LR --test --executable --product
+$ swift package plugin depermaid --direction TD --test --executable --product
 ```
 
 ```mermaid
-flowchart LR
+flowchart TD
     AnimalClient-->LifeCore[[LifeCore]]
     AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
@@ -151,7 +151,7 @@ flowchart LR
 To simplify the graph and focus solely on essential dependencies, run the following command:
 
 ```bash
-$ swift package plugin depermaid --direction LR --minimal
+$ swift package plugin depermaid --minimal
 ```
 
 The resulting Mermaid diagram will show a clearer representation by omitting duplicate arrows:

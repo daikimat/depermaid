@@ -15,9 +15,9 @@ struct Depermaid: CommandPlugin {
                                             TB - Top to bottom
                                             TD - Top-down/ same as top to bottom
                                             BT - Bottom to top
-                                            RL - Right to left
                                             LR - Left to right
-                                            Default: TD
+                                            RL - Right to left
+                                            Default: LR
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
@@ -37,7 +37,7 @@ struct Depermaid: CommandPlugin {
 
         let direction = Direction(
             rawValue:(argExtractor.extractOption(named: "direction").first ?? "").uppercased()
-        ) ?? Direction.TD
+        ) ?? Direction.LR
         let flowchart: Flowchart
         if argExtractor.extractFlag(named: "minimal") > 0 {
             flowchart = dependencyTree.filterDuplicateDependencies().createFlowchart(direction: direction)

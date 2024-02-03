@@ -131,7 +131,7 @@ flowchart TD
 
 ### Minimal Dependencies
 
-For packages with a deep hierarchy of direct dependencies, the generated graph may appear complex, as illustrated below:
+For packages with a deep hierarchy of direct and transitive dependencies, the generated graph may appear complex, as illustrated below:
 
 ```mermaid
 flowchart LR

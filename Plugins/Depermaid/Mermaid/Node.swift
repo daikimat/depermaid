@@ -5,7 +5,7 @@
 //  Created by daiki-matsumoto on 2024/01/07.
 //
 
-struct Node: Hashable, Equatable {
+struct Node {
     let id: String
     let shape: NodeShape?
 
@@ -14,16 +14,6 @@ struct Node: Hashable, Equatable {
         self.shape = shape
     }
 
-    static func == (lhs: Node, rhs: Node) -> Bool {
-        return lhs.id == rhs.id
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
-extension Node {
     func toString() -> String {
         guard let shape = shape else {
             return id
@@ -38,5 +28,17 @@ extension Node {
         case .hexagon:
             "\(id){{\(id)}}"
         }
+    }
+}
+
+extension Node: Equatable {
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+extension Node: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

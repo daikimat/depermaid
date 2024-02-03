@@ -8,13 +8,12 @@
 struct FlowchartItem: Equatable {
     let firstNode: Node
     let secondNode: Node?
+
     init(_ firstNode: Node, _ secondNode: Node? = nil) {
         self.firstNode = firstNode
         self.secondNode = secondNode
     }
-}
 
-extension FlowchartItem {
     func toString() -> String {
         var string = firstNode.toString()
         if let secondNode = secondNode {

@@ -33,10 +33,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "D",
-            dependencies: [
-                "E"
-            ]
+            name: "D"
         ),
         .target(
             name: "E"

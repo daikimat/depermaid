@@ -9,16 +9,14 @@ struct Flowchart: Equatable {
     let direction: Direction
     var items: [FlowchartItem] = []
 
+    init(direction: Direction) {
+        self.direction = direction
+    }
+
     mutating func append(_ firstNode: Node, _ secondNode: Node? = nil) {
         self.items.append(FlowchartItem(firstNode, secondNode))
     }
 
-    init(direction: Direction) {
-        self.direction = direction
-    }
-}
-
-extension Flowchart {
     func toString() -> String{
         var mermaid = "```mermaid"
         mermaid.newLine("flowchart \(self.direction)")

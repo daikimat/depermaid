@@ -17,7 +17,7 @@ Using depermaid allows you to continuously visualize the up-to-date state of you
 
     ```swift
     dependencies: [
-        .package(url: "https://github.com/daikimat/depermaid.git", from: "1.0.1")
+        .package(url: "https://github.com/daikimat/depermaid.git", from: "1.1.0")
     ],
     ```
 

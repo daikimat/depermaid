@@ -160,7 +160,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Package/Package.swift",
+				"$(SRCROOT)/AnimalPackages/Package.swift",
+				"$(SRCROOT)/ComplexPackages/Package.swift",
 			);
 			name = "Run Depermaid And Update README ";
 			outputFileListPaths = (
@@ -170,7 +171,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n  sh ${SRCROOT}/../tool/syncExampleToReadme.sh ${SRCROOT}/../\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n  xcrun --sdk macosx sh ${SRCROOT}/../tool/syncExampleToReadme.sh\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

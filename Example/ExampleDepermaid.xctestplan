@@ -18,7 +18,7 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Package",
+        "containerPath" : "container:AnimalPackages",
         "identifier" : "AnimalClientTests",
         "name" : "AnimalClientTests"
       }

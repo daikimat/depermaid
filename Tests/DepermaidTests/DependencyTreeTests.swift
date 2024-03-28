@@ -35,13 +35,13 @@ final class DependencyTreeTests: XCTestCase {
         sut.addDependency(from: nodeB)
         sut.addDependency(from: nodeA, to: nodeB)
 
-        var flowchart = Flowchart(direction: .LR)
-        flowchart.append(nodeA, nodeB)
-        flowchart.append(nodeA, nodeC)
-        flowchart.append(nodeB)
-        flowchart.append(nodeC, nodeA)
+        var expect = Flowchart(direction: .LR)
+        expect.append(nodeA, nodeB)
+        expect.append(nodeA, nodeC)
+        expect.append(nodeB)
+        expect.append(nodeC, nodeA)
 
-        XCTAssertEqual(sut.createFlowchart(direction: .LR), flowchart)
+        XCTAssertEqual(sut.createFlowchart(direction: .LR), expect)
     }
 
     func testFilterDuplicateDependencies() {

@@ -2,6 +2,14 @@
 
 [depermaid](https://github.com/daikimat/depermaid) is a Swift Package Manager plugin that generates [Mermaid](https://mermaid-js.github.io/mermaid/) diagrams representing dependencies within your Swift package.
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/daikimat/depermaid/test.yml)
+[![Github issues](https://img.shields.io/github/issues/daikimat/depermaid)](https://github.com/daikimat/depermaid/issues)
+[![Github forks](https://img.shields.io/github/forks/daikimat/depermaid)](https://github.com/daikimat/depermaid/network/members)
+[![Github stars](https://img.shields.io/github/stars/daikimat/depermaid)](https://github.com/daikimat/depermaid/stargazers)
+[![Top language](https://img.shields.io/github/languages/top/daikimat/depermaid)](https://github.com/daikimat/depermaid/)
+[![Release](https://img.shields.io/github/v/release/daikimat/depermaid)]()
+[![Github license](https://img.shields.io/github/license/daikimat/depermaid)](https://github.com/daikimat/depermaid/)
+
 ## Why Use Depermaid?
 
 Using depermaid allows you to continuously visualize the up-to-date state of your project's dependencies. It provides a means to face your project's structure visually, gaining insights into your dependencies. It's recommended to run depermaid whenever the content of your `Package.swift` file is updated and reflect the generated diagrams in your README or documentation.

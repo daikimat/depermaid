@@ -2,7 +2,7 @@
 
 [depermaid](https://github.com/daikimat/depermaid) is a Swift Package Manager plugin that generates [Mermaid](https://mermaid-js.github.io/mermaid/) diagrams representing dependencies within your Swift package.
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/daikimat/depermaid/test.yml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/daikimat/depermaid/test.yml)](https://github.com/daikimat/depermaid/actions/workflows/test.yml)
 [![Github issues](https://img.shields.io/github/issues/daikimat/depermaid)](https://github.com/daikimat/depermaid/issues)
 [![Github forks](https://img.shields.io/github/forks/daikimat/depermaid)](https://github.com/daikimat/depermaid/network/members)
 [![Github stars](https://img.shields.io/github/stars/daikimat/depermaid)](https://github.com/daikimat/depermaid/stargazers)

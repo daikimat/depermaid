@@ -4,10 +4,10 @@
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/daikimat/depermaid/test.yml)](https://github.com/daikimat/depermaid/actions/workflows/test.yml)
 [![Github issues](https://img.shields.io/github/issues/daikimat/depermaid)](https://github.com/daikimat/depermaid/issues)
+[![Github license](https://img.shields.io/github/license/daikimat/depermaid)](https://github.com/daikimat/depermaid/blob/main/LICENSE)
+[![Release](https://img.shields.io/github/v/release/daikimat/depermaid)](https://github.com/daikimat/depermaid/releases)
 [![Github forks](https://img.shields.io/github/forks/daikimat/depermaid)](https://github.com/daikimat/depermaid/network/members)
 [![Github stars](https://img.shields.io/github/stars/daikimat/depermaid)](https://github.com/daikimat/depermaid/stargazers)
-[![Release](https://img.shields.io/github/v/release/daikimat/depermaid)](https://github.com/daikimat/depermaid/releases)
-[![Github license](https://img.shields.io/github/license/daikimat/depermaid)](https://github.com/daikimat/depermaid/blob/main/LICENSE)
 
 ## Why Use Depermaid?
 

@@ -6,9 +6,8 @@
 [![Github issues](https://img.shields.io/github/issues/daikimat/depermaid)](https://github.com/daikimat/depermaid/issues)
 [![Github forks](https://img.shields.io/github/forks/daikimat/depermaid)](https://github.com/daikimat/depermaid/network/members)
 [![Github stars](https://img.shields.io/github/stars/daikimat/depermaid)](https://github.com/daikimat/depermaid/stargazers)
-[![Top language](https://img.shields.io/github/languages/top/daikimat/depermaid)](https://github.com/daikimat/depermaid/)
-[![Release](https://img.shields.io/github/v/release/daikimat/depermaid)]()
-[![Github license](https://img.shields.io/github/license/daikimat/depermaid)](https://github.com/daikimat/depermaid/)
+[![Release](https://img.shields.io/github/v/release/daikimat/depermaid)](https://github.com/daikimat/depermaid/releases)
+[![Github license](https://img.shields.io/github/license/daikimat/depermaid)](https://github.com/daikimat/depermaid/blob/main/LICENSE)
 
 ## Why Use Depermaid?
 

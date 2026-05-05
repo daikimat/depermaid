@@ -49,12 +49,10 @@ final class MermaidTests: XCTestCase {
         flowchart.append(Node("test2"), Node("test3"))
 
         let actual = """
-        ```mermaid
         flowchart TD
             test1
             test2
             test2-->test3
-        ```
         """
         XCTAssertEqual(flowchart.toString(), actual)
     }
@@ -63,45 +61,35 @@ final class MermaidTests: XCTestCase {
         let flowchartBT = Flowchart(direction: .BT)
 
         let actualBT = """
-        ```mermaid
         flowchart BT
-        ```
         """
         XCTAssertEqual(flowchartBT.toString(), actualBT)
 
         let flowchartLR = Flowchart(direction: .LR)
 
         let actualLR = """
-        ```mermaid
         flowchart LR
-        ```
         """
         XCTAssertEqual(flowchartLR.toString(), actualLR)
 
         let flowchartRL = Flowchart(direction: .RL)
 
         let actualRL = """
-        ```mermaid
         flowchart RL
-        ```
         """
         XCTAssertEqual(flowchartRL.toString(), actualRL)
 
         let flowchartTB = Flowchart(direction: .TB)
 
         let actualTB = """
-        ```mermaid
         flowchart TB
-        ```
         """
         XCTAssertEqual(flowchartTB.toString(), actualTB)
 
         let flowchartTD = Flowchart(direction: .TD)
 
         let actualTD = """
-        ```mermaid
         flowchart TD
-        ```
         """
         XCTAssertEqual(flowchartTD.toString(), actualTD)
     }

@@ -102,19 +102,43 @@ flowchart LR
     Example-->Dog
 ```
 
-### Including All
+### Including Macro Targets
 
-Run the following command to include test targets, executable targets, and products in the generated Mermaid diagram:
+Run the following command to include macro targets (`.macro(name:...)`) in the generated Mermaid diagram:
 
 ```bash
-$ swift package plugin depermaid --test --executable --product
+$ swift package plugin depermaid --macro
+```
+
+```mermaid
+flowchart LR
+    AnimalClient
+    AnimalMacros[/AnimalMacros/]
+    Cat-->AnimalClient
+    Cat-->AnimalMacros
+    Dog-->AnimalClient
+    Example-->Cat
+    Example-->Dog
+```
+
+Macro targets are rendered with a parallelogram shape (`Name[/Name/]`).
+
+### Including All
+
+Run the following command to include test targets, executable targets, products, and macro targets in the generated Mermaid diagram:
+
+```bash
+$ swift package plugin depermaid --test --executable --product --macro
 ```
 
 ```mermaid
 flowchart LR
     AnimalClient-->LifeCore[[LifeCore]]
     AnimalClientTests{{AnimalClientTests}}-->AnimalClient
+    AnimalMacros[/AnimalMacros/]-->SwiftCompilerPlugin[[SwiftCompilerPlugin]]
+    AnimalMacros[/AnimalMacros/]-->SwiftSyntaxMacros[[SwiftSyntaxMacros]]
     Cat-->AnimalClient
+    Cat-->AnimalMacros
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
@@ -126,14 +150,17 @@ flowchart LR
 You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, LR. By default, it's set to LR."
 
 ```bash
-$ swift package plugin depermaid --direction TD --test --executable --product
+$ swift package plugin depermaid --direction TD --test --executable --product --macro
 ```
 
 ```mermaid
 flowchart TD
     AnimalClient-->LifeCore[[LifeCore]]
     AnimalClientTests{{AnimalClientTests}}-->AnimalClient
+    AnimalMacros[/AnimalMacros/]-->SwiftCompilerPlugin[[SwiftCompilerPlugin]]
+    AnimalMacros[/AnimalMacros/]-->SwiftSyntaxMacros[[SwiftSyntaxMacros]]
     Cat-->AnimalClient
+    Cat-->AnimalMacros
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog

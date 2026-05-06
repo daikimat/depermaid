@@ -27,6 +27,8 @@ struct Node {
             "\(id)[[\(id)]]"
         case .hexagon:
             "\(id){{\(id)}}"
+        case .parallelogram:
+            "\(id)[/\(id)/]"
         }
     }
 }

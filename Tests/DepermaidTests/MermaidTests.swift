@@ -28,6 +28,10 @@ final class MermaidTests: XCTestCase {
         let hexagonNode = Node("hexagonNode", shape: .hexagon)
         let hexagonNodeActual = "hexagonNode{{hexagonNode}}"
         XCTAssertEqual(hexagonNode.toString(), hexagonNodeActual)
+
+        let parallelogramNode = Node("parallelogramNode", shape: .parallelogram)
+        let parallelogramNodeActual = "parallelogramNode[/parallelogramNode/]"
+        XCTAssertEqual(parallelogramNode.toString(), parallelogramNodeActual)
     }
 
     func testFlowChartItemToString() {

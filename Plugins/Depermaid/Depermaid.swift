@@ -21,6 +21,7 @@ struct Depermaid: CommandPlugin {
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
+                  --macro                 Include .macro(name:...)
                   --minimal               Generate a minimal Mermaid diagram by including only essential dependencies.
                   --help                  Show help information.
                 """
@@ -32,7 +33,8 @@ struct Depermaid: CommandPlugin {
             from: context.package.sourceModules,
             includeTest: (argExtractor.extractFlag(named: "test") > 0),
             includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
-            includeProduct: (argExtractor.extractFlag(named: "product") > 0)
+            includeProduct: (argExtractor.extractFlag(named: "product") > 0),
+            includeMacro: (argExtractor.extractFlag(named: "macro") > 0)
         )
 
         let direction = Direction(
@@ -51,10 +53,11 @@ struct Depermaid: CommandPlugin {
         from sourceModules: [SourceModuleTarget],
         includeTest: Bool,
         includeExecutable: Bool,
-        includeProduct: Bool
+        includeProduct: Bool,
+        includeMacro: Bool
     ) -> DependencyTree {
         var dependencyTree = DependencyTree()
-        sourceModules
+        let includedModules = sourceModules
             .filter { module in
                 return  switch (module.kind) {
                 case .generic:
@@ -70,12 +73,14 @@ struct Depermaid: CommandPlugin {
                     false
 
                 case .macro:
-                    false
+                    includeMacro
 
                 @unknown default:
                     fatalError("unknown kind")
                 }
             }
+        let includedModuleNames = Set(includedModules.map(\.name))
+        includedModules
             .forEach { module in
                 switch (module.kind) {
                 case .generic:
@@ -91,7 +96,7 @@ struct Depermaid: CommandPlugin {
                     break
 
                 case .macro:
-                    break
+                    dependencyTree.addDependency(from: Node(module.name, shape: .parallelogram))
 
                 @unknown default:
                     fatalError("unknown kind")
@@ -100,8 +105,8 @@ struct Depermaid: CommandPlugin {
                 module.dependencies
                     .filter { dependencies in
                         switch dependencies {
-                        case .target(_):
-                            true
+                        case let .target(target):
+                            includedModuleNames.contains(target.name)
 
                         case .product(_):
                             includeProduct

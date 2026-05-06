@@ -1,12 +1,15 @@
 // swift-tools-version: 5.9
 
 import PackageDescription
+import CompilerPluginSupport
 
 let package = Package(
     name: "ExampleDepermaidAnimalPackage",
+    platforms: [.macOS(.v10_15)],
     dependencies: [
         .package(path: "../../../depermaid"),
-        .package(path: "./Library")
+        .package(path: "./Library"),
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "509.0.0"),
     ],
     targets: [
         .target(
@@ -19,7 +22,8 @@ let package = Package(
         .target(
             name: "Cat",
             dependencies: [
-                "AnimalClient"
+                "AnimalClient",
+                "AnimalMacros"
             ]
         ),
         .target(
@@ -44,6 +48,13 @@ let package = Package(
             name: "ExecutableExample",
             dependencies: [
                 "Dog"
+            ]
+        ),
+        .macro(
+            name: "AnimalMacros",
+            dependencies: [
+                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
             ]
         ),
     ]

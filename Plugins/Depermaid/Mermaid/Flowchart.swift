@@ -18,12 +18,10 @@ struct Flowchart: Equatable {
     }
 
     func toString() -> String{
-        var mermaid = "```mermaid"
-        mermaid.newLine("flowchart \(self.direction)")
+        var mermaid = "flowchart \(self.direction)"
         items.forEach { item in
             mermaid.newLine(item.toString(), indent: 1)
         }
-        mermaid.newLine("```")
         return mermaid
     }
 }

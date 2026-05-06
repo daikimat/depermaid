@@ -102,6 +102,16 @@ flowchart LR
     Example-->Dog
 ```
 
+### Including Macro Targets
+
+Run the following command to include macro targets (`.macro(name:...)`) in the generated Mermaid diagram:
+
+```bash
+$ swift package plugin depermaid --include-macro
+```
+
+Macro targets are rendered with a parallelogram shape (`Name[/Name/]`).
+
 ### Including All
 
 Run the following command to include test targets, executable targets, and products in the generated Mermaid diagram:

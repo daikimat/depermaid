@@ -21,6 +21,7 @@ struct Depermaid: CommandPlugin {
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
+                  --include-macro         Include .macro(name:...)
                   --minimal               Generate a minimal Mermaid diagram by including only essential dependencies.
                   --help                  Show help information.
                 """
@@ -32,7 +33,8 @@ struct Depermaid: CommandPlugin {
             from: context.package.sourceModules,
             includeTest: (argExtractor.extractFlag(named: "test") > 0),
             includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
-            includeProduct: (argExtractor.extractFlag(named: "product") > 0)
+            includeProduct: (argExtractor.extractFlag(named: "product") > 0),
+            includeMacro: (argExtractor.extractFlag(named: "include-macro") > 0)
         )
 
         let direction = Direction(
@@ -51,7 +53,8 @@ struct Depermaid: CommandPlugin {
         from sourceModules: [SourceModuleTarget],
         includeTest: Bool,
         includeExecutable: Bool,
-        includeProduct: Bool
+        includeProduct: Bool,
+        includeMacro: Bool
     ) -> DependencyTree {
         var dependencyTree = DependencyTree()
         sourceModules
@@ -70,7 +73,7 @@ struct Depermaid: CommandPlugin {
                     false
 
                 case .macro:
-                    false
+                    includeMacro
 
                 @unknown default:
                     fatalError("unknown kind")
@@ -91,7 +94,7 @@ struct Depermaid: CommandPlugin {
                     break
 
                 case .macro:
-                    break
+                    dependencyTree.addDependency(from: Node(module.name, shape: .parallelogram))
 
                 @unknown default:
                     fatalError("unknown kind")

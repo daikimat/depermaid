@@ -10,4 +10,5 @@ enum NodeShape {
     case stadium
     case subroutine
     case hexagon
+    case parallelogram
 }

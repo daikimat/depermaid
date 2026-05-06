@@ -123,8 +123,6 @@ flowchart LR
 
 Macro targets are rendered with a parallelogram shape (`Name[/Name/]`).
 
-> **Note:** When a `.macro` target depends on swift-syntax 6xx products, those edges may not appear in the diagram. SwiftPM's `PackagePlugin` API does not expose those dependencies in that case, so depermaid cannot render them. See [#27](https://github.com/daikimat/depermaid/issues/27) for details.
-
 ### Including All
 
 Run the following command to include test targets, executable targets, products, and macro targets in the generated Mermaid diagram:

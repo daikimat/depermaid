@@ -107,7 +107,7 @@ flowchart LR
 Run the following command to include macro targets (`.macro(name:...)`) in the generated Mermaid diagram:
 
 ```bash
-$ swift package plugin depermaid --include-macro
+$ swift package plugin depermaid --macro
 ```
 
 ```mermaid
@@ -130,7 +130,7 @@ Macro targets are rendered with a parallelogram shape (`Name[/Name/]`).
 Run the following command to include test targets, executable targets, products, and macro targets in the generated Mermaid diagram:
 
 ```bash
-$ swift package plugin depermaid --test --executable --product --include-macro
+$ swift package plugin depermaid --test --executable --product --macro
 ```
 
 ```mermaid
@@ -152,7 +152,7 @@ flowchart LR
 You have the option to define the orientation of the generated Mermaid diagram by utilizing the --direction parameter. The available orientations are TD, TB(same as TD), BT, RL, LR. By default, it's set to LR."
 
 ```bash
-$ swift package plugin depermaid --direction TD --test --executable --product --include-macro
+$ swift package plugin depermaid --direction TD --test --executable --product --macro
 ```
 
 ```mermaid

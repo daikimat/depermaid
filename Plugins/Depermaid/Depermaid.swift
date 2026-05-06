@@ -21,7 +21,7 @@ struct Depermaid: CommandPlugin {
                   --test                  Include .testTarget(name:...)
                   --executable            Include .executableTarget(name:...)
                   --product               Include .product(name:...)
-                  --include-macro         Include .macro(name:...)
+                  --macro                 Include .macro(name:...)
                   --minimal               Generate a minimal Mermaid diagram by including only essential dependencies.
                   --help                  Show help information.
                 """
@@ -34,7 +34,7 @@ struct Depermaid: CommandPlugin {
             includeTest: (argExtractor.extractFlag(named: "test") > 0),
             includeExecutable: (argExtractor.extractFlag(named: "executable") > 0),
             includeProduct: (argExtractor.extractFlag(named: "product") > 0),
-            includeMacro: (argExtractor.extractFlag(named: "include-macro") > 0)
+            includeMacro: (argExtractor.extractFlag(named: "macro") > 0)
         )
 
         let direction = Direction(

@@ -29,15 +29,15 @@ replacement=$(swift package --package-path $root/Example/AnimalPackages depermai
 echo $replacement
 sync_block "# Including Products" "$replacement"
 
-replacement=$(swift package --package-path $root/Example/AnimalPackages depermaid --include-macro)
+replacement=$(swift package --package-path $root/Example/AnimalPackages depermaid --macro)
 echo $replacement
 sync_block "# Including Macro Targets" "$replacement"
 
-replacement=$(swift package --package-path $root/Example/AnimalPackages depermaid --test --executable --product --include-macro)
+replacement=$(swift package --package-path $root/Example/AnimalPackages depermaid --test --executable --product --macro)
 echo $replacement
 sync_block "# Including All" "$replacement"
 
-replacement=$(swift package --package-path $root/Example/AnimalPackages depermaid --direction TD --test --executable --product --include-macro)
+replacement=$(swift package --package-path $root/Example/AnimalPackages depermaid --direction TD --test --executable --product --macro)
 echo $replacement
 sync_block "# Direction" "$replacement"
 

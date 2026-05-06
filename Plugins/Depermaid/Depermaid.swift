@@ -57,7 +57,7 @@ struct Depermaid: CommandPlugin {
         includeMacro: Bool
     ) -> DependencyTree {
         var dependencyTree = DependencyTree()
-        sourceModules
+        let includedModules = sourceModules
             .filter { module in
                 return  switch (module.kind) {
                 case .generic:
@@ -79,6 +79,8 @@ struct Depermaid: CommandPlugin {
                     fatalError("unknown kind")
                 }
             }
+        let includedModuleNames = Set(includedModules.map(\.name))
+        includedModules
             .forEach { module in
                 switch (module.kind) {
                 case .generic:
@@ -103,8 +105,8 @@ struct Depermaid: CommandPlugin {
                 module.dependencies
                     .filter { dependencies in
                         switch dependencies {
-                        case .target(_):
-                            true
+                        case let .target(target):
+                            includedModuleNames.contains(target.name)
 
                         case .product(_):
                             includeProduct

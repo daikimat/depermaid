@@ -40,7 +40,6 @@ Using depermaid allows you to continuously visualize the up-to-date state of you
 flowchart LR
     AnimalClient
     Cat-->AnimalClient
-    Cat-->AnimalMacros
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
@@ -63,7 +62,6 @@ flowchart LR
     AnimalClient
     AnimalClientTests{{AnimalClientTests}}-->AnimalClient
     Cat-->AnimalClient
-    Cat-->AnimalMacros
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
@@ -81,7 +79,6 @@ $ swift package plugin depermaid --executable
 flowchart LR
     AnimalClient
     Cat-->AnimalClient
-    Cat-->AnimalMacros
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
@@ -100,7 +97,6 @@ $ swift package plugin depermaid --product
 flowchart LR
     AnimalClient-->LifeCore[[LifeCore]]
     Cat-->AnimalClient
-    Cat-->AnimalMacros
     Dog-->AnimalClient
     Example-->Cat
     Example-->Dog
